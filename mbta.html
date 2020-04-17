@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Massachusetts Bay Transportation Authority</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="mbta.html">MBTA</a>
+</li>
+<li>
+  <a href="food.html">World Food</a>
+</li>
+<li>
+  <a href="school.html">School</a>
+</li>
+<li>
+  <a href="ticket_sales.html">Ticket</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Massachusetts Bay Transportation Authority</h1>
+
+</div>
+
+
+<p>The Massachusetts Bay Transportation Authority (“MBTA” or just “the T” for short) manages America’s oldest subway, as well as Greater Boston’s commuter rail, ferry, and bus systems.</p>
+<p>We will clean the data. The dataset is stored as an Excel spreadsheet called mbta.xlsx.</p>
+<p>The first row is a title, so we’ll need to skip the first row.</p>
+<pre class="r"><code># Load readxl
+library(readxl)
+
+# Import mbta.xlsx and skip first row: mbta
+mbta &lt;- read_excel(&quot;mbta.xlsx&quot;, skip = 1)</code></pre>
+<pre><code>## New names:
+## * `` -&gt; ...1</code></pre>
+<p>The first step when cleaning a dataset is to explore it a bit. Pay particular attention to how the rows and columns are organized and to the locations of missing values.</p>
+<pre class="r"><code># View the structure of mbta
+str(mbta)</code></pre>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    11 obs. of  60 variables:
+##  $ ...1   : num  1 2 3 4 5 6 7 8 9 10 ...
+##  $ mode   : chr  &quot;All Modes by Qtr&quot; &quot;Boat&quot; &quot;Bus&quot; &quot;Commuter Rail&quot; ...
+##  $ 2007-01: chr  &quot;NA&quot; &quot;4&quot; &quot;335.819&quot; &quot;142.2&quot; ...
+##  $ 2007-02: chr  &quot;NA&quot; &quot;3.6&quot; &quot;338.675&quot; &quot;138.5&quot; ...
+##  $ 2007-03: num  1188 40 340 138 459 ...
+##  $ 2007-04: chr  &quot;NA&quot; &quot;4.3&quot; &quot;352.162&quot; &quot;139.5&quot; ...
+##  $ 2007-05: chr  &quot;NA&quot; &quot;4.9&quot; &quot;354.367&quot; &quot;139&quot; ...
+##  $ 2007-06: num  1246 5.8 350.5 143 477 ...
+##  $ 2007-07: chr  &quot;NA&quot; &quot;6.521&quot; &quot;357.519&quot; &quot;142.391&quot; ...
+##  $ 2007-08: chr  &quot;NA&quot; &quot;6.572&quot; &quot;355.479&quot; &quot;142.364&quot; ...
+##  $ 2007-09: num  1256.57 5.47 372.6 143.05 499.57 ...
+##  $ 2007-10: chr  &quot;NA&quot; &quot;5.145&quot; &quot;368.847&quot; &quot;146.542&quot; ...
+##  $ 2007-11: chr  &quot;NA&quot; &quot;3.763&quot; &quot;330.826&quot; &quot;145.089&quot; ...
+##  $ 2007-12: num  1216.89 2.98 312.92 141.59 448.27 ...
+##  $ 2008-01: chr  &quot;NA&quot; &quot;3.175&quot; &quot;340.324&quot; &quot;142.145&quot; ...
+##  $ 2008-02: chr  &quot;NA&quot; &quot;3.111&quot; &quot;352.905&quot; &quot;142.607&quot; ...
+##  $ 2008-03: num  1253.52 3.51 361.15 137.45 494.05 ...
+##  $ 2008-04: chr  &quot;NA&quot; &quot;4.164&quot; &quot;368.189&quot; &quot;140.389&quot; ...
+##  $ 2008-05: chr  &quot;NA&quot; &quot;4.015&quot; &quot;363.903&quot; &quot;142.585&quot; ...
+##  $ 2008-06: num  1314.82 5.19 362.96 142.06 518.35 ...
+##  $ 2008-07: chr  &quot;NA&quot; &quot;6.016&quot; &quot;370.921&quot; &quot;145.731&quot; ...
+##  $ 2008-08: chr  &quot;NA&quot; &quot;5.8&quot; &quot;361.057&quot; &quot;144.565&quot; ...
+##  $ 2008-09: num  1307.04 4.59 389.54 141.91 517.32 ...
+##  $ 2008-10: chr  &quot;NA&quot; &quot;4.285&quot; &quot;357.974&quot; &quot;151.957&quot; ...
+##  $ 2008-11: chr  &quot;NA&quot; &quot;3.488&quot; &quot;345.423&quot; &quot;152.952&quot; ...
+##  $ 2008-12: num  1232.65 3.01 325.77 140.81 446.74 ...
+##  $ 2009-01: chr  &quot;NA&quot; &quot;3.014&quot; &quot;338.532&quot; &quot;141.448&quot; ...
+##  $ 2009-02: chr  &quot;NA&quot; &quot;3.196&quot; &quot;360.412&quot; &quot;143.529&quot; ...
+##  $ 2009-03: num  1209.79 3.33 353.69 142.89 467.22 ...
+##  $ 2009-04: chr  &quot;NA&quot; &quot;4.049&quot; &quot;359.38&quot; &quot;142.34&quot; ...
+##  $ 2009-05: chr  &quot;NA&quot; &quot;4.119&quot; &quot;354.75&quot; &quot;144.225&quot; ...
+##  $ 2009-06: num  1233.1 4.9 347.9 142 473.1 ...
+##  $ 2009-07: chr  &quot;NA&quot; &quot;6.444&quot; &quot;339.477&quot; &quot;137.691&quot; ...
+##  $ 2009-08: chr  &quot;NA&quot; &quot;5.903&quot; &quot;332.661&quot; &quot;139.158&quot; ...
+##  $ 2009-09: num  1230.5 4.7 374.3 139.1 500.4 ...
+##  $ 2009-10: chr  &quot;NA&quot; &quot;4.212&quot; &quot;385.868&quot; &quot;137.104&quot; ...
+##  $ 2009-11: chr  &quot;NA&quot; &quot;3.576&quot; &quot;366.98&quot; &quot;129.343&quot; ...
+##  $ 2009-12: num  1207.85 3.11 332.39 126.07 440.93 ...
+##  $ 2010-01: chr  &quot;NA&quot; &quot;3.207&quot; &quot;362.226&quot; &quot;130.91&quot; ...
+##  $ 2010-02: chr  &quot;NA&quot; &quot;3.195&quot; &quot;361.138&quot; &quot;131.918&quot; ...
+##  $ 2010-03: num  1208.86 3.48 373.44 131.25 483.4 ...
+##  $ 2010-04: chr  &quot;NA&quot; &quot;4.452&quot; &quot;378.611&quot; &quot;131.722&quot; ...
+##  $ 2010-05: chr  &quot;NA&quot; &quot;4.415&quot; &quot;380.171&quot; &quot;128.8&quot; ...
+##  $ 2010-06: num  1244.41 5.41 363.27 129.14 490.26 ...
+##  $ 2010-07: chr  &quot;NA&quot; &quot;6.513&quot; &quot;353.04&quot; &quot;122.935&quot; ...
+##  $ 2010-08: chr  &quot;NA&quot; &quot;6.269&quot; &quot;343.688&quot; &quot;129.732&quot; ...
+##  $ 2010-09: num  1225.5 4.7 381.6 132.9 521.1 ...
+##  $ 2010-10: chr  &quot;NA&quot; &quot;4.402&quot; &quot;384.987&quot; &quot;131.033&quot; ...
+##  $ 2010-11: chr  &quot;NA&quot; &quot;3.731&quot; &quot;367.955&quot; &quot;130.889&quot; ...
+##  $ 2010-12: num  1216.26 3.16 326.34 121.42 450.43 ...
+##  $ 2011-01: chr  &quot;NA&quot; &quot;3.14&quot; &quot;334.958&quot; &quot;128.396&quot; ...
+##  $ 2011-02: chr  &quot;NA&quot; &quot;3.284&quot; &quot;346.234&quot; &quot;125.463&quot; ...
+##  $ 2011-03: num  1223.45 3.67 380.4 134.37 516.73 ...
+##  $ 2011-04: chr  &quot;NA&quot; &quot;4.251&quot; &quot;380.446&quot; &quot;134.169&quot; ...
+##  $ 2011-05: chr  &quot;NA&quot; &quot;4.431&quot; &quot;385.289&quot; &quot;136.14&quot; ...
+##  $ 2011-06: num  1302.41 5.47 376.32 135.58 529.53 ...
+##  $ 2011-07: chr  &quot;NA&quot; &quot;6.581&quot; &quot;361.585&quot; &quot;132.41&quot; ...
+##  $ 2011-08: chr  &quot;NA&quot; &quot;6.733&quot; &quot;353.793&quot; &quot;130.616&quot; ...
+##  $ 2011-09: num  1291 5 388 137 550 ...
+##  $ 2011-10: chr  &quot;NA&quot; &quot;4.484&quot; &quot;398.456&quot; &quot;128.72&quot; ...</code></pre>
+<pre class="r"><code># View the first 6 rows of mbta
+head(mbta)</code></pre>
+<pre><code>## # A tibble: 6 x 60
+##    ...1 mode  `2007-01` `2007-02` `2007-03` `2007-04` `2007-05` `2007-06` `2007-07` `2007-08` `2007-09`
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;
+## 1     1 All ~ NA        NA            1188. NA        NA           1246.  NA        NA          1257.  
+## 2     2 Boat  4         3.6             40  4.3       4.9             5.8 6.521     6.572          5.47
+## 3     3 Bus   335.819   338.675        340. 352.162   354.367       351.  357.519   355.479      373.  
+## 4     4 Comm~ 142.2     138.5          138. 139.5     139           143   142.391   142.364      143.  
+## 5     5 Heav~ 435.294   448.271        459. 472.201   474.579       477.  471.735   461.605      500.  
+## 6     6 Ligh~ 227.231   240.262        241. 255.557   248.262       246.  243.286   234.907      266.  
+## # ... with 49 more variables: `2007-10` &lt;chr&gt;, `2007-11` &lt;chr&gt;, `2007-12` &lt;dbl&gt;, `2008-01` &lt;chr&gt;,
+## #   `2008-02` &lt;chr&gt;, `2008-03` &lt;dbl&gt;, `2008-04` &lt;chr&gt;, `2008-05` &lt;chr&gt;, `2008-06` &lt;dbl&gt;,
+## #   `2008-07` &lt;chr&gt;, `2008-08` &lt;chr&gt;, `2008-09` &lt;dbl&gt;, `2008-10` &lt;chr&gt;, `2008-11` &lt;chr&gt;,
+## #   `2008-12` &lt;dbl&gt;, `2009-01` &lt;chr&gt;, `2009-02` &lt;chr&gt;, `2009-03` &lt;dbl&gt;, `2009-04` &lt;chr&gt;,
+## #   `2009-05` &lt;chr&gt;, `2009-06` &lt;dbl&gt;, `2009-07` &lt;chr&gt;, `2009-08` &lt;chr&gt;, `2009-09` &lt;dbl&gt;,
+## #   `2009-10` &lt;chr&gt;, `2009-11` &lt;chr&gt;, `2009-12` &lt;dbl&gt;, `2010-01` &lt;chr&gt;, `2010-02` &lt;chr&gt;,
+## #   `2010-03` &lt;dbl&gt;, `2010-04` &lt;chr&gt;, `2010-05` &lt;chr&gt;, `2010-06` &lt;dbl&gt;, `2010-07` &lt;chr&gt;,
+## #   `2010-08` &lt;chr&gt;, `2010-09` &lt;dbl&gt;, `2010-10` &lt;chr&gt;, `2010-11` &lt;chr&gt;, `2010-12` &lt;dbl&gt;,
+## #   `2011-01` &lt;chr&gt;, `2011-02` &lt;chr&gt;, `2011-03` &lt;dbl&gt;, `2011-04` &lt;chr&gt;, `2011-05` &lt;chr&gt;,
+## #   `2011-06` &lt;dbl&gt;, `2011-07` &lt;chr&gt;, `2011-08` &lt;chr&gt;, `2011-09` &lt;dbl&gt;, `2011-10` &lt;chr&gt;</code></pre>
+<pre class="r"><code># View a summary of mbta
+summary(mbta)</code></pre>
+<pre><code>##       ...1          mode             2007-01            2007-02             2007-03        
+##  Min.   : 1.0   Length:11          Length:11          Length:11          Min.   :   0.114  
+##  1st Qu.: 3.5   Class :character   Class :character   Class :character   1st Qu.:   9.278  
+##  Median : 6.0   Mode  :character   Mode  :character   Mode  :character   Median : 137.700  
+##  Mean   : 6.0                                                            Mean   : 330.293  
+##  3rd Qu.: 8.5                                                            3rd Qu.: 399.225  
+##  Max.   :11.0                                                            Max.   :1204.725  
+##    2007-04            2007-05             2007-06           2007-07            2007-08         
+##  Length:11          Length:11          Min.   :   0.096   Length:11          Length:11         
+##  Class :character   Class :character   1st Qu.:   5.700   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Median : 143.000   Mode  :character   Mode  :character  
+##                                        Mean   : 339.846                                        
+##                                        3rd Qu.: 413.788                                        
+##                                        Max.   :1246.129                                        
+##     2007-09           2007-10            2007-11             2007-12           2008-01         
+##  Min.   :  -0.007   Length:11          Length:11          Min.   :  -0.060   Length:11         
+##  1st Qu.:   5.539   Class :character   Class :character   1st Qu.:   4.385   Class :character  
+##  Median : 143.051   Mode  :character   Mode  :character   Median : 141.585   Mode  :character  
+##  Mean   : 352.554                                         Mean   : 321.588                     
+##  3rd Qu.: 436.082                                         3rd Qu.: 380.594                     
+##  Max.   :1310.764                                         Max.   :1216.890                     
+##    2008-02             2008-03           2008-04            2008-05             2008-06        
+##  Length:11          Min.   :   0.058   Length:11          Length:11          Min.   :   0.060  
+##  Class :character   1st Qu.:   5.170   Class :character   Class :character   1st Qu.:   5.742  
+##  Mode  :character   Median : 137.453   Mode  :character   Mode  :character   Median : 142.057  
+##                     Mean   : 345.604                                         Mean   : 359.667  
+##                     3rd Qu.: 427.601                                         3rd Qu.: 440.656  
+##                     Max.   :1274.031                                         Max.   :1320.728  
+##    2008-07            2008-08             2008-09           2008-10            2008-11         
+##  Length:11          Length:11          Min.   :   0.021   Length:11          Length:11         
+##  Class :character   Class :character   1st Qu.:   5.691   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Median : 141.907   Mode  :character   Mode  :character  
+##                                        Mean   : 362.099                                        
+##                                        3rd Qu.: 453.430                                        
+##                                        Max.   :1338.015                                        
+##     2008-12           2009-01            2009-02             2009-03           2009-04         
+##  Min.   :  -0.015   Length:11          Length:11          Min.   :  -0.050   Length:11         
+##  1st Qu.:   4.689   Class :character   Class :character   1st Qu.:   5.003   Class :character  
+##  Median : 140.810   Mode  :character   Mode  :character   Median : 142.893   Mode  :character  
+##  Mean   : 319.882                                         Mean   : 330.142                     
+##  3rd Qu.: 386.255                                         3rd Qu.: 410.455                     
+##  Max.   :1232.655                                         Max.   :1210.912                     
+##    2009-05             2009-06           2009-07            2009-08             2009-09        
+##  Length:11          Min.   :  -0.079   Length:11          Length:11          Min.   :  -0.035  
+##  Class :character   1st Qu.:   5.845   Class :character   Class :character   1st Qu.:   5.693  
+##  Mode  :character   Median : 142.006   Mode  :character   Mode  :character   Median : 139.087  
+##                     Mean   : 333.194                                         Mean   : 346.687  
+##                     3rd Qu.: 410.482                                         3rd Qu.: 437.332  
+##                     Max.   :1233.085                                         Max.   :1291.564  
+##    2009-10            2009-11             2009-12           2010-01            2010-02         
+##  Length:11          Length:11          Min.   :  -0.022   Length:11          Length:11         
+##  Class :character   Class :character   1st Qu.:   4.784   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Median : 126.066   Mode  :character   Mode  :character  
+##                                        Mean   : 312.962                                        
+##                                        3rd Qu.: 386.659                                        
+##                                        Max.   :1207.845                                        
+##     2010-03           2010-04            2010-05             2010-06           2010-07         
+##  Min.   :   0.012   Length:11          Length:11          Min.   :   0.008   Length:11         
+##  1st Qu.:   5.274   Class :character   Class :character   1st Qu.:   6.436   Class :character  
+##  Median : 131.252   Mode  :character   Mode  :character   Median : 129.144   Mode  :character  
+##  Mean   : 332.726                                         Mean   : 335.964                     
+##  3rd Qu.: 428.420                                         3rd Qu.: 426.769                     
+##  Max.   :1225.556                                         Max.   :1244.409                     
+##    2010-08             2010-09           2010-10            2010-11             2010-12        
+##  Length:11          Min.   :   0.001   Length:11          Length:11          Min.   :  -0.004  
+##  Class :character   1st Qu.:   5.567   Class :character   Class :character   1st Qu.:   4.466  
+##  Mode  :character   Median : 132.892   Mode  :character   Mode  :character   Median : 121.422  
+##                     Mean   : 346.524                                         Mean   : 312.917  
+##                     3rd Qu.: 451.361                                         3rd Qu.: 388.385  
+##                     Max.   :1293.117                                         Max.   :1216.262  
+##    2011-01            2011-02             2011-03          2011-04            2011-05         
+##  Length:11          Length:11          Min.   :   0.05   Length:11          Length:11         
+##  Class :character   Class :character   1st Qu.:   6.03   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Median : 134.37   Mode  :character   Mode  :character  
+##                                        Mean   : 345.17                                        
+##                                        3rd Qu.: 448.56                                        
+##                                        Max.   :1286.66                                        
+##     2011-06           2011-07            2011-08             2011-09           2011-10         
+##  Min.   :   0.054   Length:11          Length:11          Min.   :   0.043   Length:11         
+##  1st Qu.:   6.926   Class :character   Class :character   1st Qu.:   6.660   Class :character  
+##  Median : 135.581   Mode  :character   Mode  :character   Median : 136.901   Mode  :character  
+##  Mean   : 353.331                                         Mean   : 362.555                     
+##  3rd Qu.: 452.923                                         3rd Qu.: 469.204                     
+##  Max.   :1302.414                                         Max.   :1348.754</code></pre>
+<p>It appears that the data are organized with observations stored as columns rather than as rows.</p>
+<p>First, though, we can address the missing data. All of the NA values are stored in the All Modes by Qtr row. This row really belongs in a different data frame; it is a quarterly average of weekday MBTA ridership. Since this dataset tracks monthly average ridership, we’ll remove that row.</p>
+<p>Similarly, the 7th row (Pct Chg / Yr) and the 11th row (TOTAL) are not really observations as much as they are analysis. We can remove them as well.</p>
+<p>The first column also needs to be removed because it’s just listing the row numbers.</p>
+<p>In cas</p>
+<pre class="r"><code># Remove rows 1, 7, and 11 of mbta: mbta2
+mbta2 &lt;- mbta[-c(1, 7, 11),]
+
+# Remove the first column of mbta2: mbta3
+mbta3 &lt;- mbta2[,-1]</code></pre>
+<p>The different modes of transportation (commuter rail, bus, subway, ferry, …) are variables, providing information about each month’s average ridership. The months themselves are observations. You can tell which is which because as you go through time, the month changes, but the modes of transport offered by the T do not.</p>
+<p>The first step is to use the gather() function from the tidyr package, which will gather columns into key-value pairs.</p>
+<pre class="r"><code># Load tidyr
+library(tidyr)
+
+# Gather columns of mbta3: mbta4
+mbta4 &lt;- gather(mbta3, month, thou_riders, -mode)
+
+# View the head of mbta4
+head(mbta4)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##   mode          month   thou_riders
+##   &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;      
+## 1 Boat          2007-01 4          
+## 2 Bus           2007-01 335.819    
+## 3 Commuter Rail 2007-01 142.2      
+## 4 Heavy Rail    2007-01 435.294    
+## 5 Light Rail    2007-01 227.231    
+## 6 Private Bus   2007-01 4.772</code></pre>
+<p>The dataset is long now – notice that the first column still stores variable names, but now, months have their own column instead of being headers. Also notice the data type of each column.</p>
+<p>We’ll put variables where they belong (as column names). But first, we can change the average weekday ridership column, thou_riders, into numeric values rather than character strings. That way, you’ll be able to do things like compare values and do math.</p>
+<pre class="r"><code># Coerce thou_riders to numeric
+mbta4$thou_riders &lt;- as.numeric(mbta4$thou_riders)</code></pre>
+<p>We can now get variables into columns.</p>
+<p>We’ll use the tidyr function spread() to make them into columns containing average weekday ridership for the given month and mode of transport.</p>
+<pre class="r"><code># Spread the contents of mbta4: mbta5
+mbta5 &lt;- spread(mbta4, mode, thou_riders)
+
+# View the head of mbta5
+head(mbta5)</code></pre>
+<pre><code>## # A tibble: 6 x 9
+##   month    Boat   Bus `Commuter Rail` `Heavy Rail` `Light Rail` `Private Bus`  RIDE `Trackless Trolley`
+##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;               &lt;dbl&gt;
+## 1 2007-01   4    336.            142.         435.         227.          4.77   4.9                12.8
+## 2 2007-02   3.6  339.            138.         448.         240.          4.42   5                  12.9
+## 3 2007-03  40    340.            138.         459.         241.          4.57   5.5                13.1
+## 4 2007-04   4.3  352.            140.         472.         256.          4.54   5.4                13.4
+## 5 2007-05   4.9  354.            139          475.         248.          4.77   5.4                13.5
+## 6 2007-06   5.8  351.            143          477.         246.          4.72   5.6                13.3</code></pre>
+<p>There’s only one small problem: if you want to look at ridership on the T during every January (for example), the month and year are together in the same column, which makes it a little tricky.</p>
+<p>We’ll separate the month column into distinct month and year columns to make life easier.</p>
+<pre class="r"><code># Split month column into month and year: mbta6
+mbta6 &lt;- separate(mbta5, month, c(&quot;year&quot;, &quot;month&quot;), sep = &quot;-&quot;)
+
+# View the head of mbta6
+head(mbta6)</code></pre>
+<pre><code>## # A tibble: 6 x 10
+##   year  month  Boat   Bus `Commuter Rail` `Heavy Rail` `Light Rail` `Private Bus`  RIDE
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;
+## 1 2007  01      4    336.            142.         435.         227.          4.77   4.9
+## 2 2007  02      3.6  339.            138.         448.         240.          4.42   5  
+## 3 2007  03     40    340.            138.         459.         241.          4.57   5.5
+## 4 2007  04      4.3  352.            140.         472.         256.          4.54   5.4
+## 5 2007  05      4.9  354.            139          475.         248.          4.77   5.4
+## 6 2007  06      5.8  351.            143          477.         246.          4.72   5.6
+## # ... with 1 more variable: `Trackless Trolley` &lt;dbl&gt;</code></pre>
+<p>It’s a good idea to screen the data for any obvious mistakes and/or outliers.</p>
+<p>We can plot a histogram.</p>
+<pre class="r"><code># View a summary of mbta6
+summary(mbta6)</code></pre>
+<pre><code>##      year              month                Boat             Bus        Commuter Rail  
+##  Length:58          Length:58          Min.   : 2.985   Min.   :312.9   Min.   :121.4  
+##  Class :character   Class :character   1st Qu.: 3.494   1st Qu.:345.6   1st Qu.:131.4  
+##  Mode  :character   Mode  :character   Median : 4.293   Median :359.9   Median :138.8  
+##                                        Mean   : 5.068   Mean   :358.6   Mean   :137.4  
+##                                        3rd Qu.: 5.356   3rd Qu.:372.2   3rd Qu.:142.4  
+##                                        Max.   :40.000   Max.   :398.5   Max.   :153.0  
+##    Heavy Rail      Light Rail     Private Bus         RIDE       Trackless Trolley
+##  Min.   :435.3   Min.   :194.4   Min.   :2.213   Min.   :4.900   Min.   : 5.777   
+##  1st Qu.:471.1   1st Qu.:220.6   1st Qu.:2.641   1st Qu.:5.965   1st Qu.:11.679   
+##  Median :487.3   Median :231.9   Median :2.820   Median :6.615   Median :12.598   
+##  Mean   :489.3   Mean   :233.0   Mean   :3.352   Mean   :6.604   Mean   :12.125   
+##  3rd Qu.:511.3   3rd Qu.:244.5   3rd Qu.:4.167   3rd Qu.:7.149   3rd Qu.:13.320   
+##  Max.   :554.9   Max.   :271.1   Max.   :4.878   Max.   :8.598   Max.   :15.109</code></pre>
+<pre class="r"><code># Generate a histogram of Boat column
+hist(mbta6$Boat)</code></pre>
+<p><img src="mbta_files/figure-html/unnamed-chunk-8-1.png" width="672" /> That’s quite an interesting histogram – every value clustered around 4 and one loner out around 40.</p>
+<p>Think for a minute about that Boat histogram. Every month, average weekday commuter boat ridership was on either side of four thousand. Then, one month it jumped to 40 thousand without warning?</p>
+<p>Unless the Olympics were happening in Boston that month (they weren’t), this value is certainly an error. We can assume that whoever was entering the data that month accidentally typed 40 instead of 4.</p>
+<p>Because it’s an error, we don’t want this value influencing your analysis.</p>
+<pre class="r"><code># Find the row number of the incorrect value: i
+i &lt;- which(mbta6$Boat&gt;30)
+
+# Replace the incorrect value with 4
+mbta6$Boat[i] &lt;- 4
+
+# Generate a histogram of Boat column
+hist(mbta6$Boat)</code></pre>
+<p><img src="mbta_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

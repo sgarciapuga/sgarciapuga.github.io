@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>World Food</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="mbta.html">MBTA</a>
+</li>
+<li>
+  <a href="food.html">World Food</a>
+</li>
+<li>
+  <a href="school.html">School</a>
+</li>
+<li>
+  <a href="ticket_sales.html">Ticket</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">World Food</h1>
+
+</div>
+
+
+<p>As a person of many talents, it’s time to take on a different job: nutrition analysis! Your goal is to analyze the sugar content of a sample of foods from around the world.</p>
+<p>A large dataset called food.csv is ready for your use in the working directory. Instead of the usual read.csv(), however, you’re going to use the faster fread() from the data.table package. By default, the data will come in as a data table, but since you’re used to working with data frames, you can get fread() to return one by setting data.table = FALSE.</p>
+<pre class="r"><code># Load data.table
+library(data.table)
+
+# Import food.csv as a data frame: food
+food &lt;- fread(&quot;food.csv&quot;, data.table = FALSE)</code></pre>
+<div id="examining-the-data" class="section level3">
+<h3>Examining the data</h3>
+<p>Let’s get an idea of what the dataset looks like in order to know how to proceed.</p>
+<pre class="r"><code># View summary of food
+summary(food)</code></pre>
+<pre><code>##        V1              code            url              creator            created_t        
+##  Min.   :   1.0   Min.   :100030   Length:1500        Length:1500        Min.   :1.332e+09  
+##  1st Qu.: 375.8   1st Qu.:124975   Class :character   Class :character   1st Qu.:1.394e+09  
+##  Median : 750.5   Median :149514   Mode  :character   Mode  :character   Median :1.425e+09  
+##  Mean   : 750.5   Mean   :149613                                         Mean   :1.414e+09  
+##  3rd Qu.:1125.2   3rd Qu.:174506                                         3rd Qu.:1.436e+09  
+##  Max.   :1500.0   Max.   :199880                                         Max.   :1.453e+09  
+##  created_datetime   last_modified_t     last_modified_datetime product_name       generic_name      
+##  Length:1500        Min.   :1.340e+09   Length:1500            Length:1500        Length:1500       
+##  Class :character   1st Qu.:1.424e+09   Class :character       Class :character   Class :character  
+##  Mode  :character   Median :1.437e+09   Mode  :character       Mode  :character   Mode  :character  
+##                     Mean   :1.430e+09                                                               
+##                     3rd Qu.:1.446e+09                                                               
+##                     Max.   :1.453e+09                                                               
+##    quantity          packaging         packaging_tags        brands          brands_tags       
+##  Length:1500        Length:1500        Length:1500        Length:1500        Length:1500       
+##  Class :character   Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                                                
+##                                                                                                
+##                                                                                                
+##   categories        categories_tags    categories_en        origins          origins_tags      
+##  Length:1500        Length:1500        Length:1500        Length:1500        Length:1500       
+##  Class :character   Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                                                
+##                                                                                                
+##                                                                                                
+##  manufacturing_places manufacturing_places_tags    labels          labels_tags       
+##  Length:1500          Length:1500               Length:1500        Length:1500       
+##  Class :character     Class :character          Class :character   Class :character  
+##  Mode  :character     Mode  :character          Mode  :character   Mode  :character  
+##                                                                                      
+##                                                                                      
+##                                                                                      
+##   labels_en          emb_codes         emb_codes_tags     first_packaging_code_geo  cities       
+##  Length:1500        Length:1500        Length:1500        Length:1500              Mode:logical  
+##  Class :character   Class :character   Class :character   Class :character         NA&#39;s:1500     
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character                       
+##                                                                                                  
+##                                                                                                  
+##                                                                                                  
+##  cities_tags        purchase_places       stores           countries         countries_tags    
+##  Length:1500        Length:1500        Length:1500        Length:1500        Length:1500       
+##  Class :character   Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                                                
+##                                                                                                
+##                                                                                                
+##  countries_en       ingredients_text    allergens         allergens_en      traces         
+##  Length:1500        Length:1500        Length:1500        Mode:logical   Length:1500       
+##  Class :character   Class :character   Class :character   NA&#39;s:1500      Class :character  
+##  Mode  :character   Mode  :character   Mode  :character                  Mode  :character  
+##                                                                                            
+##                                                                                            
+##                                                                                            
+##  traces_tags         traces_en         serving_size       no_nutriments   additives_n    
+##  Length:1500        Length:1500        Length:1500        Mode:logical   Min.   : 0.000  
+##  Class :character   Class :character   Class :character   NA&#39;s:1500      1st Qu.: 0.000  
+##  Mode  :character   Mode  :character   Mode  :character                  Median : 1.000  
+##                                                                          Mean   : 1.846  
+##                                                                          3rd Qu.: 3.000  
+##                                                                          Max.   :17.000  
+##   additives         additives_tags     additives_en       ingredients_from_palm_oil_n
+##  Length:1500        Length:1500        Length:1500        Min.   :0.0000             
+##  Class :character   Class :character   Class :character   1st Qu.:0.0000             
+##  Mode  :character   Mode  :character   Mode  :character   Median :0.0000             
+##                                                           Mean   :0.0487             
+##                                                           3rd Qu.:0.0000             
+##                                                           Max.   :1.0000             
+##  ingredients_from_palm_oil ingredients_from_palm_oil_tags ingredients_that_may_be_from_palm_oil_n
+##  Mode:logical              Length:1500                    Min.   :0.0000                         
+##  NA&#39;s:1500                 Class :character               1st Qu.:0.0000                         
+##                            Mode  :character               Median :0.0000                         
+##                                                           Mean   :0.1379                         
+##                                                           3rd Qu.:0.0000                         
+##                                                           Max.   :4.0000                         
+##  ingredients_that_may_be_from_palm_oil ingredients_that_may_be_from_palm_oil_tags nutrition_grade_uk
+##  Mode:logical                          Length:1500                                Mode:logical      
+##  NA&#39;s:1500                             Class :character                           NA&#39;s:1500         
+##                                        Mode  :character                                             
+##                                                                                                     
+##                                                                                                     
+##                                                                                                     
+##  nutrition_grade_fr pnns_groups_1      pnns_groups_2         states          states_tags       
+##  Length:1500        Length:1500        Length:1500        Length:1500        Length:1500       
+##  Class :character   Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                                                
+##                                                                                                
+##                                                                                                
+##   states_en         main_category      main_category_en    image_url         image_small_url   
+##  Length:1500        Length:1500        Length:1500        Length:1500        Length:1500       
+##  Class :character   Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                                                
+##                                                                                                
+##                                                                                                
+##   energy_100g     energy_from_fat_100g    fat_100g      saturated_fat_100g butyric_acid_100g
+##  Min.   :   0.0   Min.   :   0.00      Min.   :  0.00   Min.   : 0.000     Mode:logical     
+##  1st Qu.: 369.8   1st Qu.:  35.98      1st Qu.:  0.90   1st Qu.: 0.200     NA&#39;s:1500        
+##  Median : 966.5   Median : 237.00      Median :  6.00   Median : 1.700                      
+##  Mean   :1083.2   Mean   : 668.41      Mean   : 13.39   Mean   : 4.874                      
+##  3rd Qu.:1641.5   3rd Qu.: 974.00      3rd Qu.: 20.00   3rd Qu.: 6.500                      
+##  Max.   :3700.0   Max.   :2900.00      Max.   :100.00   Max.   :57.000                      
+##  caproic_acid_100g caprylic_acid_100g capric_acid_100g lauric_acid_100g myristic_acid_100g
+##  Mode:logical      Mode:logical       Mode:logical     Mode:logical     Mode:logical      
+##  NA&#39;s:1500         NA&#39;s:1500          NA&#39;s:1500        NA&#39;s:1500        NA&#39;s:1500         
+##                                                                                           
+##                                                                                           
+##                                                                                           
+##                                                                                           
+##  palmitic_acid_100g stearic_acid_100g arachidic_acid_100g behenic_acid_100g lignoceric_acid_100g
+##  Mode:logical       Mode:logical      Mode:logical        Mode:logical      Mode:logical        
+##  NA&#39;s:1500          NA&#39;s:1500         NA&#39;s:1500           NA&#39;s:1500         NA&#39;s:1500           
+##                                                                                                 
+##                                                                                                 
+##                                                                                                 
+##                                                                                                 
+##  cerotic_acid_100g montanic_acid_100g melissic_acid_100g monounsaturated_fat_100g
+##  Mode:logical      Mode:logical       Mode:logical       Min.   : 0.00           
+##  NA&#39;s:1500         NA&#39;s:1500          NA&#39;s:1500          1st Qu.: 3.87           
+##                                                          Median : 9.50           
+##                                                          Mean   :19.77           
+##                                                          3rd Qu.:29.00           
+##                                                          Max.   :75.00           
+##  polyunsaturated_fat_100g omega_3_fat_100g alpha_linolenic_acid_100g eicosapentaenoic_acid_100g
+##  Min.   : 0.400           Min.   : 0.033   Min.   :0.0800            Min.   :0.721             
+##  1st Qu.: 1.653           1st Qu.: 1.300   1st Qu.:0.0905            1st Qu.:0.721             
+##  Median : 3.900           Median : 3.000   Median :0.1010            Median :0.721             
+##  Mean   : 9.986           Mean   : 3.726   Mean   :0.1737            Mean   :0.721             
+##  3rd Qu.:12.700           3rd Qu.: 3.200   3rd Qu.:0.2205            3rd Qu.:0.721             
+##  Max.   :46.200           Max.   :12.400   Max.   :0.3400            Max.   :0.721             
+##  docosahexaenoic_acid_100g omega_6_fat_100g linoleic_acid_100g arachidonic_acid_100g
+##  Min.   :1.09              Min.   :0.25     Min.   :0.5000     Mode:logical         
+##  1st Qu.:1.09              1st Qu.:0.25     1st Qu.:0.5165     NA&#39;s:1500            
+##  Median :1.09              Median :0.25     Median :0.5330                          
+##  Mean   :1.09              Mean   :0.25     Mean   :0.5330                          
+##  3rd Qu.:1.09              3rd Qu.:0.25     3rd Qu.:0.5495                          
+##  Max.   :1.09              Max.   :0.25     Max.   :0.5660                          
+##  gamma_linolenic_acid_100g dihomo_gamma_linolenic_acid_100g omega_9_fat_100g oleic_acid_100g
+##  Mode:logical              Mode:logical                     Mode:logical     Mode:logical   
+##  NA&#39;s:1500                 NA&#39;s:1500                        NA&#39;s:1500        NA&#39;s:1500      
+##                                                                                             
+##                                                                                             
+##                                                                                             
+##                                                                                             
+##  elaidic_acid_100g gondoic_acid_100g mead_acid_100g erucic_acid_100g nervonic_acid_100g
+##  Mode:logical      Mode:logical      Mode:logical   Mode:logical     Mode:logical      
+##  NA&#39;s:1500         NA&#39;s:1500         NA&#39;s:1500      NA&#39;s:1500        NA&#39;s:1500         
+##                                                                                        
+##                                                                                        
+##                                                                                        
+##                                                                                        
+##  trans_fat_100g   cholesterol_100g carbohydrates_100g  sugars_100g     sucrose_100g   glucose_100g  
+##  Min.   :0.0000   Min.   :0.0000   Min.   :  0.000    Min.   :  0.00   Mode:logical   Mode:logical  
+##  1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:  3.792    1st Qu.:  1.00   NA&#39;s:1500      NA&#39;s:1500     
+##  Median :0.0000   Median :0.0000   Median : 13.500    Median :  4.05                                
+##  Mean   :0.0105   Mean   :0.0265   Mean   : 27.958    Mean   : 12.66                                
+##  3rd Qu.:0.0000   3rd Qu.:0.0026   3rd Qu.: 55.000    3rd Qu.: 14.70                                
+##  Max.   :0.1000   Max.   :0.4300   Max.   :100.000    Max.   :100.00                                
+##  fructose_100g   lactose_100g   maltose_100g   maltodextrins_100g  starch_100g     polyols_100g  
+##  Min.   :100    Min.   :0.000   Mode:logical   Mode:logical       Min.   : 0.00   Min.   : 8.60  
+##  1st Qu.:100    1st Qu.:0.250   NA&#39;s:1500      NA&#39;s:1500          1st Qu.: 9.45   1st Qu.:59.10  
+##  Median :100    Median :0.500                                     Median :39.50   Median :67.00  
+##  Mean   :100    Mean   :2.933                                     Mean   :30.73   Mean   :56.06  
+##  3rd Qu.:100    3rd Qu.:4.400                                     3rd Qu.:42.85   3rd Qu.:69.80  
+##  Max.   :100    Max.   :8.300                                     Max.   :71.00   Max.   :70.00  
+##    fiber_100g     proteins_100g     casein_100g   serum_proteins_100g nucleotides_100g
+##  Min.   : 0.000   Min.   : 0.000   Min.   :1.1    Mode:logical        Mode:logical    
+##  1st Qu.: 0.500   1st Qu.: 1.500   1st Qu.:1.1    NA&#39;s:1500           NA&#39;s:1500       
+##  Median : 1.750   Median : 6.000   Median :1.1                                        
+##  Mean   : 2.823   Mean   : 7.563   Mean   :1.1                                        
+##  3rd Qu.: 3.500   3rd Qu.:10.675   3rd Qu.:1.1                                        
+##  Max.   :46.700   Max.   :61.000   Max.   :1.1                                        
+##    salt_100g         sodium_100g       alcohol_100g   vitamin_a_100g   beta_carotene_100g
+##  Min.   :  0.0000   Min.   : 0.0000   Min.   : 0.00   Min.   :0.0000   Mode:logical      
+##  1st Qu.:  0.0438   1st Qu.: 0.0172   1st Qu.: 0.00   1st Qu.:0.0000   NA&#39;s:1500         
+##  Median :  0.4498   Median : 0.1771   Median : 5.50   Median :0.0001                     
+##  Mean   :  1.1205   Mean   : 0.4409   Mean   :10.07   Mean   :0.0003                     
+##  3rd Qu.:  1.1938   3rd Qu.: 0.4700   3rd Qu.:13.00   3rd Qu.:0.0006                     
+##  Max.   :102.0000   Max.   :40.0000   Max.   :50.00   Max.   :0.0013                     
+##  vitamin_d_100g  vitamin_e_100g   vitamin_k_100g vitamin_c_100g  vitamin_b1_100g  vitamin_b2_100g 
+##  Min.   :0e+00   Min.   :0.0005   Min.   :0      Min.   :0.000   Min.   :0.0001   Min.   :0.0002  
+##  1st Qu.:0e+00   1st Qu.:0.0021   1st Qu.:0      1st Qu.:0.002   1st Qu.:0.0003   1st Qu.:0.0003  
+##  Median :0e+00   Median :0.0044   Median :0      Median :0.019   Median :0.0004   Median :0.0009  
+##  Mean   :0e+00   Mean   :0.0069   Mean   :0      Mean   :0.025   Mean   :0.0006   Mean   :0.0011  
+##  3rd Qu.:0e+00   3rd Qu.:0.0097   3rd Qu.:0      3rd Qu.:0.030   3rd Qu.:0.0010   3rd Qu.:0.0013  
+##  Max.   :1e-04   Max.   :0.0320   Max.   :0      Max.   :0.217   Max.   :0.0013   Max.   :0.0066  
+##  vitamin_pp_100g  vitamin_b6_100g  vitamin_b9_100g vitamin_b12_100g  biotin_100g  
+##  Min.   :0.0006   Min.   :0.0001   Min.   :0e+00   Min.   :0        Min.   :0     
+##  1st Qu.:0.0033   1st Qu.:0.0002   1st Qu.:0e+00   1st Qu.:0        1st Qu.:0     
+##  Median :0.0069   Median :0.0008   Median :1e-04   Median :0        Median :0     
+##  Mean   :0.0086   Mean   :0.0112   Mean   :1e-04   Mean   :0        Mean   :0     
+##  3rd Qu.:0.0140   3rd Qu.:0.0012   3rd Qu.:2e-04   3rd Qu.:0        3rd Qu.:0     
+##  Max.   :0.0160   Max.   :0.2000   Max.   :2e-04   Max.   :0        Max.   :0     
+##  pantothenic_acid_100g  silica_100g    bicarbonate_100g potassium_100g   chloride_100g   
+##  Min.   :0.0000        Min.   :8e-04   Min.   :0.0006   Min.   :0.0000   Min.   :0.0003  
+##  1st Qu.:0.0007        1st Qu.:8e-04   1st Qu.:0.0678   1st Qu.:0.0650   1st Qu.:0.0006  
+##  Median :0.0020        Median :8e-04   Median :0.1350   Median :0.1940   Median :0.0009  
+##  Mean   :0.0027        Mean   :8e-04   Mean   :0.1692   Mean   :0.3288   Mean   :0.0144  
+##  3rd Qu.:0.0051        3rd Qu.:8e-04   3rd Qu.:0.2535   3rd Qu.:0.3670   3rd Qu.:0.0214  
+##  Max.   :0.0060        Max.   :8e-04   Max.   :0.3720   Max.   :1.4300   Max.   :0.0420  
+##   calcium_100g    phosphorus_100g    iron_100g      magnesium_100g     zinc_100g       copper_100g   
+##  Min.   :0.0000   Min.   :0.0430   Min.   :0.0000   Min.   :0.0000   Min.   :0.0005   Min.   :0e+00  
+##  1st Qu.:0.0450   1st Qu.:0.1938   1st Qu.:0.0012   1st Qu.:0.0670   1st Qu.:0.0009   1st Qu.:1e-04  
+##  Median :0.1200   Median :0.3185   Median :0.0042   Median :0.1040   Median :0.0017   Median :1e-04  
+##  Mean   :0.2040   Mean   :0.3777   Mean   :0.0045   Mean   :0.1066   Mean   :0.0016   Mean   :1e-04  
+##  3rd Qu.:0.1985   3rd Qu.:0.4340   3rd Qu.:0.0077   3rd Qu.:0.1300   3rd Qu.:0.0022   3rd Qu.:1e-04  
+##  Max.   :1.0000   Max.   :1.1550   Max.   :0.0137   Max.   :0.3330   Max.   :0.0026   Max.   :1e-04  
+##  manganese_100g fluoride_100g  selenium_100g  chromium_100g  molybdenum_100g  iodine_100g  
+##  Min.   :0      Min.   :0      Min.   :0      Mode:logical   Mode:logical    Min.   :0     
+##  1st Qu.:0      1st Qu.:0      1st Qu.:0      NA&#39;s:1500      NA&#39;s:1500       1st Qu.:0     
+##  Median :0      Median :0      Median :0                                     Median :0     
+##  Mean   :0      Mean   :0      Mean   :0                                     Mean   :0     
+##  3rd Qu.:0      3rd Qu.:0      3rd Qu.:0                                     3rd Qu.:0     
+##  Max.   :0      Max.   :0      Max.   :0                                     Max.   :0     
+##  caffeine_100g  taurine_100g   ph_100g        fruits_vegetables_nuts_100g
+##  Mode:logical   Mode:logical   Mode:logical   Min.   : 2.00              
+##  NA&#39;s:1500      NA&#39;s:1500      NA&#39;s:1500      1st Qu.:11.25              
+##                                               Median :42.00              
+##                                               Mean   :36.88              
+##                                               3rd Qu.:52.25              
+##                                               Max.   :80.00              
+##  collagen_meat_protein_ratio_100g   cocoa_100g   chlorophyl_100g carbon_footprint_100g
+##  Min.   :12.00                    Min.   :30     Mode:logical    Min.   : 12.00       
+##  1st Qu.:13.50                    1st Qu.:47     NA&#39;s:1500       1st Qu.: 97.42       
+##  Median :15.00                    Median :60                     Median :182.85       
+##  Mean   :15.67                    Mean   :57                     Mean   :131.18       
+##  3rd Qu.:17.50                    3rd Qu.:70                     3rd Qu.:190.78       
+##  Max.   :20.00                    Max.   :81                     Max.   :198.70       
+##  nutrition_score_fr_100g nutrition_score_uk_100g
+##  Min.   :-12.000         Min.   :-12.000        
+##  1st Qu.:  1.000         1st Qu.:  0.000        
+##  Median :  7.000         Median :  6.000        
+##  Mean   :  7.941         Mean   :  7.631        
+##  3rd Qu.: 15.000         3rd Qu.: 16.000        
+##  Max.   : 28.000         Max.   : 28.000        
+##  [ reached getOption(&quot;max.print&quot;) -- omitted 1 row ]</code></pre>
+<pre class="r"><code># View head of food
+head(food)</code></pre>
+<pre><code>##   V1   code
+## 1  1 100030
+## 2  2 100050
+## 3  3 100079
+## 4  4 100094
+## 5  5 100124
+## 6  6 100136
+##                                                                                                                            url
+## 1 http://world-en.openfoodfacts.org/product/3222475745867/confiture-de-fraise-fraise-des-bois-au-sucre-de-canne-casino-delices
+## 2                                         http://world-en.openfoodfacts.org/product/5410976880110/guylian-sea-shells-selection
+## 3                                  http://world-en.openfoodfacts.org/product/3264750423503/pates-de-fruits-aromatisees-jacquot
+## 4                                  http://world-en.openfoodfacts.org/product/8006040247001/nata-vegetal-a-base-de-soja-valsoia
+## 5           http://world-en.openfoodfacts.org/product/8480000340764/semillas-de-girasol-con-cascara-tostadas-aguasal-hacendado
+## 6                                                           http://world-en.openfoodfacts.org/product/0087703177727/soft-drink
+##       creator  created_t     created_datetime last_modified_t last_modified_datetime
+## 1    sebleouf 1424747544 2015-02-24T03:12:24Z      1438445887   2015-08-01T16:18:07Z
+## 2 foodorigins 1450316429 2015-12-17T01:40:29Z      1450817956   2015-12-22T20:59:16Z
+## 3    domdom26 1428674916 2015-04-10T14:08:36Z      1428739289   2015-04-11T08:01:29Z
+## 4     javichu 1420416591 2015-01-05T00:09:51Z      1420417876   2015-01-05T00:31:16Z
+## 5     javichu 1420501121 2015-01-05T23:38:41Z      1445700917   2015-10-24T15:35:17Z
+## 6 foodorigins 1437983923 2015-07-27T07:58:43Z      1445577476   2015-10-23T05:17:56Z
+##                                            product_name
+## 1 Confiture de fraise fraise des bois au sucre de canne
+## 2                          Guylian Sea Shells Selection
+## 3                         PÃ¢tes de fruits aromatisÃ©es
+## 4       Nata vegetal a base de soja &amp;quot;Valsoia&amp;quot;
+## 5     Semillas de girasol con cÃ¡scara tostadas aguasal
+## 6                                            Soft Drink
+##                                        generic_name quantity
+## 1                                                      265 g
+## 2                                                       375g
+## 3                                  PÃ¢tes de fruits     1 kg
+## 4                       Nata vegetal a base de soja   200 ml
+## 5 Semillas de girasol con cÃ¡scara tostadas aguasal    200 g
+## 6                                                           
+##                                              packaging
+## 1                                          Bocal,Verre
+## 2                                          Plastic,Box
+## 3                                     Carton,plastique
+## 4                                           Tetra Brik
+## 5 Bolsa de plÃ¡stico,Envasado en atmÃ³sfera protectora
+## 6                                                     
+##                                       packaging_tags                                     brands
+## 1                                        bocal,verre                            Casino DÃ©lices
+## 2                                        plastic,box                                    Guylian
+## 3                                   carton,plastique                                    Jacquot
+## 4                                         tetra-brik   Valsoia,//Propiedad de://,Valsoia S.p.A.
+## 5 bolsa-de-plastico,envasado-en-atmosfera-protectora Hacendado,//Propiedad de://,Mercadona S.A.
+## 6                                                                                              
+##                            brands_tags
+## 1                       casino-delices
+## 2                              guylian
+## 3                              jacquot
+## 4   valsoia,propiedad-de,valsoia-s-p-a
+## 5 hacendado,propiedad-de,mercadona-s-a
+## 6                                     
+##                                                                                                                                                                                                                                                                                                                                                    categories
+## 1 Aliments et boissons Ã  base de vÃ©gÃ©taux,Aliments d&#39;origine vÃ©gÃ©tale,Aliments Ã  base de fruits et de lÃ©gumes,Petit-dÃ©jeuners,Produits Ã  tartiner,Fruits et produits dÃ©rivÃ©s,PÃ¢tes Ã  tartiner vÃ©gÃ©taux,Produits Ã  tartiner sucrÃ©s,Confitures et marmelades,Confitures,Confitures de fruits,Confitures de fruits rouges,Confitures de fraises
+## 2                                                                                                                                                                                                                                                                                                                                                   Chocolate
+## 3                                                                                                                                                                                                                                                                                                                                            pÃ¢tes de fruits
+## 4                                                                                                                                                                                                  Alimentos y bebidas de origen vegetal,Alimentos de origen vegetal,Natas vegetales,Natas vegetales a base de soja para cocinar,Natas vegetales para cocinar
+## 5                                                                                                                                Semillas de girasol y derivados, Semillas, Semillas de girasol, Semillas de girasol con cÃ¡scara, Semillas de girasol tostadas, Semillas de girasol con cÃ¡scara tostadas, Semillas de girasol con cÃ¡scara tostadas aguasal
+## 6                                                                                                                                                                                                                                                                                                                                                            
+##                                                                                                                                                                                                                                                              categories_tags
+## 1              en:plant-based-foods-and-beverages,en:plant-based-foods,en:fruits-and-vegetables-based-foods,en:breakfasts,en:spreads,en:fruits-based-foods,en:plant-based-spreads,en:sweet-spreads,en:fruit-preserves,en:jams,en:fruit-jams,en:berry-jams,en:strawberry-jams
+## 2                                                                                                                                                                                                                                             en:sugary-snacks,en:chocolates
+## 3                                                                                                     en:plant-based-foods-and-beverages,en:plant-based-foods,en:fruits-and-vegetables-based-foods,en:sugary-snacks,en:confectioneries,en:fruits-based-foods,en:fruit-pastes
+## 4                                                                                                                            en:plant-based-foods-and-beverages,en:plant-based-foods,en:plant-based-creams,en:plant-based-creams-for-cooking,en:soy-based-creams-for-cooking
+## 5 en:plant-based-foods-and-beverages,en:plant-based-foods,en:seeds,en:sunflower-seeds-and-their-products,en:sunflower-seeds,en:roasted-sunflower-seeds,en:unshelled-sunflower-seeds,en:roasted-unshelled-sunflower-seeds,es:semillas-de-girasol-con-cascara-tostadas-aguasal
+## 6                                                                                                                                                                                                                                                                           
+##                                                                                                                                                                                                                                        categories_en
+## 1                             Plant-based foods and beverages,Plant-based foods,Fruits and vegetables based foods,Breakfasts,Spreads,Fruits based foods,Plant-based spreads,Sweet spreads,Fruit preserves,Jams,Fruit jams,Berry jams,Strawberry jams
+## 2                                                                                                                                                                                                                           Sugary snacks,Chocolates
+## 3                                                                                                  Plant-based foods and beverages,Plant-based foods,Fruits and vegetables based foods,Sugary snacks,Confectioneries,Fruits based foods,Fruit pastes
+## 4                                                                                                                   Plant-based foods and beverages,Plant-based foods,Plant-based creams,Plant-based creams for cooking,Soy-based creams for cooking
+## 5 Plant-based foods and beverages,Plant-based foods,Seeds,Sunflower seeds and their products,Sunflower seeds,Roasted sunflower seeds,Unshelled sunflower seeds,Roasted unshelled sunflower seeds,es:Semillas-de-girasol-con-cascara-tostadas-aguasal
+## 6                                                                                                                                                                                                                                                   
+##       origins origins_tags                                          manufacturing_places
+## 1                                                                                 France
+## 2                                                                                Belgium
+## 3                                                                                       
+## 4                                                                                 Italia
+## 5   Argentina    argentina Beniparrell,Valencia (provincia),Comunidad Valenciana,EspaÃ±a
+## 6 South Korea  south-korea                                                   South Korea
+##                                    manufacturing_places_tags
+## 1                                                     france
+## 2                                                    belgium
+## 3                                                           
+## 4                                                     italia
+## 5 beniparrell,valencia-provincia,comunidad-valenciana,espana
+## 6                                                south-korea
+##                                              labels
+## 1                                                  
+## 2                                                  
+## 3                                                  
+## 4 Vegetariano,Vegano,Sin gluten,Sin OMG,Sin lactosa
+## 5                     Vegetariano,Vegano,Sin gluten
+## 6                                                  
+##                                                      labels_tags
+## 1                                                               
+## 2                                                               
+## 3                                                               
+## 4 en:vegetarian,en:vegan,en:gluten-free,en:no-gmos,en:no-lactose
+## 5                          en:vegetarian,en:vegan,en:gluten-free
+## 6                                                               
+##                                         labels_en                                   emb_codes
+## 1                                                                                   EMB 78015
+## 2                                                                                            
+## 3                                                                                            
+## 4 Vegetarian,Vegan,Gluten-free,No GMOs,No lactose                                            
+## 5                    Vegetarian,Vegan,Gluten-free ES 21.016540/V EC,ENVASADOR:,IMPORTACO S.A.
+## 6                                                                                            
+##                              emb_codes_tags first_packaging_code_geo cities             cities_tags
+## 1                                 emb-78015       48.983333,2.066667     NA andresy-yvelines-france
+## 2                                                                        NA                        
+## 3                                                                        NA                        
+## 4                                                                        NA                        
+## 5 es-21-016540-v-ec,envasador,importaco-s-a                              NA                        
+## 6                                                                        NA                        
+##   purchase_places           stores countries countries_tags countries_en
+## 1     Lyon,France           Casino    France      en:france       France
+## 2   NSW,Australia                  Australia   en:australia    Australia
+## 3          France                     France      en:france       France
+## 4  Madrid,EspaÃ±a El Corte InglÃ©s   EspaÃ±a       en:spain        Spain
+## 5  Madrid,EspaÃ±a        Mercadona   EspaÃ±a       en:spain        Spain
+## 6                                  Australia   en:australia    Australia
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ingredients_text
+## 1                                                                                                                                                                                                                                                                                                                                                                     Sucre de canne, fraises 40 g, fraises des bois 14 g, gÃ©lifiant : pectines de fruits, jus de citron concentrÃ©. PrÃ©parÃ©e avec 54 g de fruits pour 100 g de produit fini.
+## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+## 3                                                                                                                                                                                                                                                                                                                        Pulpe de pommes 50% , sucre, sirop de glucose, gÃ©lifiant : pectine, acidifiant : acide citrique, arÃ´mes, colorants naturels : extrait de paprika â\200” complexes cuivreâ\200”chlorophyllines â\200” curcumine â\200” antnocyanes
+## 4 Extracto de soja (78%) (agua, semillas de soja 8,3%), grasas vegetales, jarabe de glucosa, dextrosa, emulsionante: mono- y diglicÃ©ridos de Ã¡cidos grasos (E-471), sal marina, estabilizantes: goma xantana (E-415), carragenatos (E-407), goma guar (E-412); aromas, antioxidante: extractos de tocoferoles (de soja) (E-306). (Nota: el envase en italiano del paquete -que puede verse en el enlace-, especifica que el producto es 100% vegetal. Por tanto los mono- y diglicÃ©ridos de Ã¡cidos grasos (E-471) son de origen no animal). 
+## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Pipas de girasol y sal.
+## 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+##   allergens allergens_en                        traces        traces_tags    traces_en serving_size
+## 1                     NA          Lait,Fruits Ã  coque    en:milk,en:nuts    Milk,Nuts         15 g
+## 2                     NA                                                                           
+## 3                     NA                                                                           
+## 4                     NA                                                                           
+## 5                     NA Frutos de cÃ¡scara,Cacahuetes en:nuts,en:peanuts Nuts,Peanuts             
+## 6                     NA                                                                           
+##   no_nutriments additives_n
+## 1            NA           1
+## 2            NA          NA
+## 3            NA           2
+## 4            NA           5
+## 5            NA           0
+## 6            NA          NA
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           additives
+## 1 [ sucre-de-canne -&gt; fr:sucre-de-canne  ]  [ sucre-de -&gt; fr:sucre-de  ]  [ sucre -&gt; fr:sucre  ]  [ fraises-40-g -&gt; fr:fraises-40-g  ]  [ fraises-40 -&gt; fr:fraises-40  ]  [ fraises -&gt; fr:fraises  ]  [ fraises-des-bois-14-g -&gt; fr:fraises-des-bois-14-g  ]  [ fraises-des-bois-14 -&gt; fr:fraises-des-bois-14  ]  [ fraises-des-bois -&gt; fr:fraises-des-bois  ]  [ fraises-des -&gt; fr:fraises-des  ]  [ fraises -&gt; fr:fraises  ]  [ pectines-de-fruits -&gt; fr:pectines-de-fruits  ]  [ pectines-de -&gt; fr:pectines-de  ]  [ pectines -&gt; en:e440  -&gt; exists  ]  [ jus-de-citron-concentre-preparee-avec-54-g-de-fruits-pour-100-g-de-produit-fini -&gt; fr:jus-de-citron-concentre-preparee-avec-54-g-de-fruits-pour-100-g-de-produit-fini  ]  [ jus-de-citron-concentre-preparee-avec-54-g-de-fruits-pour-100-g-de-produit -&gt; fr:jus-de-citron-concentre-preparee-avec-54-g-de-fruits-pour-100-g-de-produit  ]  [ jus-de-citron-concentre-preparee-avec-54-g-de-fruits-pour-100-g-de -&gt; fr:jus-de-citron-concentre-preparee-avec-54-g-de-fruits-pour-100-g-de  ]  [ jus-de-citron-concentre-preparee-avec-54-g-de-fruits-pour-100-g -&gt; fr:jus-de-citron-concentre-preparee-avec-54-g-de-fruits-pour-100-g  ]  [ jus-de-citron-concentre-preparee-avec-54-g-de-fruits-pour-100 -&gt; fr:jus-de-citron-concentre-preparee-avec-54-g-de-fruits-pour-100  ]  [ jus-de-citron-concentre-preparee-avec-54-g-de-fruits-pour -&gt; fr:jus-de-citron-concentre-preparee-avec-54-g-de-fruits-pour  ]  [ jus-de-citron-concentre-preparee-avec-54-g-de-fruits -&gt; fr:jus-de-citron-concentre-preparee-avec-54-g-de-fruits  ]  [ jus-de-citron-concentre-preparee-avec-54-g-de -&gt; fr:jus-de-citron-concentre-preparee-avec-54-g-de  ]  [ jus-de-citron-concentre-preparee-avec-54-g -&gt; fr:jus-de-citron-concentre-preparee-avec-54-g  ]  [ jus-de-citron-concentre-preparee-avec-54 -&gt; fr:jus-de-citron-concentre-preparee-avec-54  ]  [ jus-de-citron-concentre-preparee-avec -&gt; fr:jus-de-citron-concentre-preparee-avec  ]  [ jus-de-citron-concentre-preparee -&gt; fr:jus-de-citron-concentre-preparee  ]  [ jus-de-citron-concentre -&gt; fr:jus-de-citron-concentre  ]  [ jus-de-citron -&gt; fr:jus-de-citron  ]  [ jus-de -&gt; fr:jus-de  ]  [ jus -&gt; fr:jus  ]
+## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       [ pulpe-de-pommes-50 -&gt; fr:pulpe-de-pommes-50  ]  [ pulpe-de-pommes -&gt; fr:pulpe-de-pommes  ]  [ pulpe-de -&gt; fr:pulpe-de  ]  [ pulpe -&gt; fr:pulpe  ]  [ sucre -&gt; fr:sucre  ]  [ sirop-de-glucose -&gt; fr:sirop-de-glucose  ]  [ sirop-de -&gt; fr:sirop-de  ]  [ sirop -&gt; fr:sirop  ]  [ pectine -&gt; en:e440  -&gt; exists  ]  [ acide-citrique -&gt; en:e330  -&gt; exists  ]  [ aromes -&gt; fr:aromes  ]  [ naturels -&gt; fr:naturels  ]  [ extrait-de-paprika-complexes-cuivre-chlorophyllines-curcumine-antnocyanes -&gt; fr:extrait-de-paprika-complexes-cuivre-chlorophyllines-curcumine-antnocyanes  ]  [ extrait-de-paprika-complexes-cuivre-chlorophyllines-curcumine -&gt; fr:extrait-de-paprika-complexes-cuivre-chlorophyllines-curcumine  ]  [ extrait-de-paprika-complexes-cuivre-chlorophyllines -&gt; fr:extrait-de-paprika-complexes-cuivre-chlorophyllines  ]  [ extrait-de-paprika-complexes-cuivre -&gt; fr:extrait-de-paprika-complexes-cuivre  ]  [ extrait-de-paprika-complexes -&gt; fr:extrait-de-paprika-complexes  ]  [ extrait-de-paprika -&gt; fr:extrait-de-paprika  ]  [ extrait-de -&gt; fr:extrait-de  ]  [ extrait -&gt; fr:extrait  ]
+## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       [ extracto-de-soja -&gt; es:extracto-de-soja  ]  [ 78 -&gt; es:78  ]  [ agua -&gt; es:agua  ]  [ semillas-de-soja-8 -&gt; es:semillas-de-soja-8  ]  [ 3 -&gt; en:fd-c  ]  [ grasas-vegetales -&gt; es:grasas-vegetales  ]  [ jarabe-de-glucosa -&gt; es:jarabe-de-glucosa  ]  [ dextrosa -&gt; es:dextrosa  ]  [ emulsionante -&gt; es:emulsionante  ]  [ mono-y-digliceridos-de-acidos-grasos -&gt; en:e471  -&gt; exists  ]  [ e471 -&gt; en:e471  ]  [ sal-marina -&gt; es:sal-marina  ]  [ estabilizantes -&gt; es:estabilizantes  ]  [ goma-xantana -&gt; en:e415  -&gt; exists  ]  [ e415 -&gt; en:e415  ]  [ carragenatos -&gt; en:e407  -&gt; exists  ]  [ e407 -&gt; en:e407  ]  [ goma-guar -&gt; en:e412  -&gt; exists  ]  [ e412 -&gt; en:e412  ]  [ aromas -&gt; es:aromas  ]  [ antioxidante -&gt; es:antioxidante  ]  [ extractos-de-tocoferoles -&gt; es:extractos-de-tocoferoles  ]  [ de-soja -&gt; es:de-soja  ]  [ e306 -&gt; en:e306  -&gt; exists  ]  [ nota -&gt; es:nota  ]  [ el-envase-en-italiano-del-paquete-que-puede-verse-en-el-enlace -&gt; es:el-envase-en-italiano-del-paquete-que-puede-verse-en-el-enlace  ]  [ especifica-que-el-producto-es-100-vegetal-por-tanto-los-mono-y-digliceridos-de-acidos-grasos -&gt; es:especifica-que-el-producto-es-100-vegetal-por-tanto-los-mono-y-digliceridos-de-acidos-grasos  ]  [ e471 -&gt; en:e471  ]  [ son-de-origen-no-animal -&gt; es:son-de-origen-no-animal  ]  [   -&gt; es:   ]
+## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          [ pipas-de-girasol-y-sal -&gt; es:pipas-de-girasol-y-sal  ]
+## 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+##                            additives_tags
+## 1                                 en:e440
+## 2                                        
+## 3                         en:e440,en:e330
+## 4 en:e471,en:e415,en:e407,en:e412,en:e306
+## 5                                        
+## 6                                        
+##                                                                                                                        additives_en
+## 1                                                                                                                    E440 - Pectins
+## 2                                                                                                                                  
+## 3                                                                                                 E440 - Pectins,E330 - Citric acid
+## 4 E471 - Mono- and diglycerides of fatty acids,E415 - Xanthan gum,E407 - Carrageenan,E412 - Guar gum,E306 - Tocopherol-rich extract
+## 5                                                                                                                                  
+## 6                                                                                                                                  
+##   ingredients_from_palm_oil_n ingredients_from_palm_oil ingredients_from_palm_oil_tags
+## 1                           0                        NA                               
+## 2                          NA                        NA                               
+## 3                           0                        NA                               
+## 4                           0                        NA                               
+## 5                           0                        NA                               
+## 6                          NA                        NA                               
+##   ingredients_that_may_be_from_palm_oil_n ingredients_that_may_be_from_palm_oil
+## 1                                       0                                    NA
+## 2                                      NA                                    NA
+## 3                                       0                                    NA
+## 4                                       1                                    NA
+## 5                                       0                                    NA
+## 6                                      NA                                    NA
+##             ingredients_that_may_be_from_palm_oil_tags nutrition_grade_uk nutrition_grade_fr
+## 1                                                                      NA                  d
+## 2                                                                      NA                   
+## 3                                                                      NA                   
+## 4 e471-mono-et-diglycerides-d-acides-gras-alimentaires                 NA                  d
+## 5                                                                      NA                  d
+## 6                                                                      NA                   
+##           pnns_groups_1      pnns_groups_2
+## 1         Sugary snacks             Sweets
+## 2         Sugary snacks Chocolate products
+## 3 Fruits and vegetables             Fruits
+## 4               unknown            unknown
+## 5               unknown            unknown
+## 6               unknown            unknown
+##                                                                                                                                                                                                                                                                                                                               states
+## 1                                                                                                                                   en:to-be-checked, en:complete, en:nutrition-facts-completed, en:ingredients-completed, en:expiration-date-to-be-completed, en:characteristics-completed, en:photos-validated, en:photos-uploaded
+## 2                                                                                                                                  en:to-be-completed, en:nutrition-facts-to-be-completed, en:ingredients-to-be-completed, en:expiration-date-to-be-completed, en:characteristics-completed, en:photos-validated, en:photos-uploaded
+## 3                                                                                                                                   en:to-be-checked, en:complete, en:nutrition-facts-completed, en:ingredients-completed, en:expiration-date-to-be-completed, en:characteristics-completed, en:photos-validated, en:photos-uploaded
+## 4                                                                                                                                         en:to-be-checked, en:complete, en:nutrition-facts-completed, en:ingredients-completed, en:expiration-date-completed, en:characteristics-completed, en:photos-validated, en:photos-uploaded
+## 5                                                                                                                                         en:to-be-checked, en:complete, en:nutrition-facts-completed, en:ingredients-completed, en:expiration-date-completed, en:characteristics-completed, en:photos-validated, en:photos-uploaded
+## 6 en:to-be-completed, en:nutrition-facts-to-be-completed, en:ingredients-to-be-completed, en:expiration-date-to-be-completed, en:characteristics-to-be-completed, en:categories-to-be-completed, en:brands-to-be-completed, en:packaging-to-be-completed, en:quantity-to-be-completed, en:photos-to-be-validated, en:photos-uploaded
+##                                                                                                                                                                                                                                                                                                                states_tags
+## 1                                                                                                                                en:to-be-checked,en:complete,en:nutrition-facts-completed,en:ingredients-completed,en:expiration-date-to-be-completed,en:characteristics-completed,en:photos-validated,en:photos-uploaded
+## 2                                                                                                                              en:to-be-completed,en:nutrition-facts-to-be-completed,en:ingredients-to-be-completed,en:expiration-date-to-be-completed,en:characteristics-completed,en:photos-validated,en:photos-uploaded
+## 3                                                                                                                                en:to-be-checked,en:complete,en:nutrition-facts-completed,en:ingredients-completed,en:expiration-date-to-be-completed,en:characteristics-completed,en:photos-validated,en:photos-uploaded
+## 4                                                                                                                                      en:to-be-checked,en:complete,en:nutrition-facts-completed,en:ingredients-completed,en:expiration-date-completed,en:characteristics-completed,en:photos-validated,en:photos-uploaded
+## 5                                                                                                                                      en:to-be-checked,en:complete,en:nutrition-facts-completed,en:ingredients-completed,en:expiration-date-completed,en:characteristics-completed,en:photos-validated,en:photos-uploaded
+## 6 en:to-be-completed,en:nutrition-facts-to-be-completed,en:ingredients-to-be-completed,en:expiration-date-to-be-completed,en:characteristics-to-be-completed,en:categories-to-be-completed,en:brands-to-be-completed,en:packaging-to-be-completed,en:quantity-to-be-completed,en:photos-to-be-validated,en:photos-uploaded
+##                                                                                                                                                                                                                                                                                 states_en
+## 1                                                                                                                       To be checked,Complete,Nutrition facts completed,Ingredients completed,Expiration date to be completed,Characteristics completed,Photos validated,Photos uploaded
+## 2                                                                                                                  To be completed,Nutrition facts to be completed,Ingredients to be completed,Expiration date to be completed,Characteristics completed,Photos validated,Photos uploaded
+## 3                                                                                                                       To be checked,Complete,Nutrition facts completed,Ingredients completed,Expiration date to be completed,Characteristics completed,Photos validated,Photos uploaded
+## 4                                                                                                                             To be checked,Complete,Nutrition facts completed,Ingredients completed,Expiration date completed,Characteristics completed,Photos validated,Photos uploaded
+## 5                                                                                                                             To be checked,Complete,Nutrition facts completed,Ingredients completed,Expiration date completed,Characteristics completed,Photos validated,Photos uploaded
+## 6 To be completed,Nutrition facts to be completed,Ingredients to be completed,Expiration date to be completed,Characteristics to be completed,Categories to be completed,Brands to be completed,Packaging to be completed,Quantity to be completed,Photos to be validated,Photos uploaded
+##                        main_category                main_category_en
+## 1 en:plant-based-foods-and-beverages Plant-based foods and beverages
+## 2                   en:sugary-snacks                   Sugary snacks
+## 3 en:plant-based-foods-and-beverages Plant-based foods and beverages
+## 4 en:plant-based-foods-and-beverages Plant-based foods and beverages
+## 5 en:plant-based-foods-and-beverages Plant-based foods and beverages
+## 6                                                                   
+##                                                                      image_url
+## 1 http://en.openfoodfacts.org/images/products/322/247/574/5867/front.8.400.jpg
+## 2 http://en.openfoodfacts.org/images/products/541/097/688/0110/front.7.400.jpg
+## 3 http://en.openfoodfacts.org/images/products/326/475/042/3503/front.6.400.jpg
+## 4 http://en.openfoodfacts.org/images/products/800/604/024/7001/front.7.400.jpg
+## 5 http://en.openfoodfacts.org/images/products/848/000/034/0764/front.6.400.jpg
+## 6 http://en.openfoodfacts.org/images/products/008/770/317/7727/front.8.400.jpg
+##                                                                image_small_url energy_100g
+## 1 http://en.openfoodfacts.org/images/products/322/247/574/5867/front.8.200.jpg         918
+## 2 http://en.openfoodfacts.org/images/products/541/097/688/0110/front.7.200.jpg          NA
+## 3 http://en.openfoodfacts.org/images/products/326/475/042/3503/front.6.200.jpg          NA
+## 4 http://en.openfoodfacts.org/images/products/800/604/024/7001/front.7.200.jpg         766
+## 5 http://en.openfoodfacts.org/images/products/848/000/034/0764/front.6.200.jpg        2359
+## 6 http://en.openfoodfacts.org/images/products/008/770/317/7727/front.8.200.jpg          NA
+##   energy_from_fat_100g fat_100g saturated_fat_100g butyric_acid_100g caproic_acid_100g
+## 1                   NA      0.0                0.0                NA                NA
+## 2                   NA       NA                 NA                NA                NA
+## 3                   NA       NA                 NA                NA                NA
+## 4                   NA     16.7                9.9                NA                NA
+## 5                   NA     45.5                5.2                NA                NA
+## 6                   NA       NA                 NA                NA                NA
+##   caprylic_acid_100g capric_acid_100g lauric_acid_100g myristic_acid_100g palmitic_acid_100g
+## 1                 NA               NA               NA                 NA                 NA
+## 2                 NA               NA               NA                 NA                 NA
+## 3                 NA               NA               NA                 NA                 NA
+## 4                 NA               NA               NA                 NA                 NA
+## 5                 NA               NA               NA                 NA                 NA
+## 6                 NA               NA               NA                 NA                 NA
+##   stearic_acid_100g arachidic_acid_100g behenic_acid_100g lignoceric_acid_100g cerotic_acid_100g
+## 1                NA                  NA                NA                   NA                NA
+## 2                NA                  NA                NA                   NA                NA
+## 3                NA                  NA                NA                   NA                NA
+## 4                NA                  NA                NA                   NA                NA
+## 5                NA                  NA                NA                   NA                NA
+## 6                NA                  NA                NA                   NA                NA
+##   montanic_acid_100g melissic_acid_100g monounsaturated_fat_100g polyunsaturated_fat_100g
+## 1                 NA                 NA                       NA                       NA
+## 2                 NA                 NA                       NA                       NA
+## 3                 NA                 NA                       NA                       NA
+## 4                 NA                 NA                      2.9                      3.9
+## 5                 NA                 NA                      9.5                     32.8
+## 6                 NA                 NA                       NA                       NA
+##   omega_3_fat_100g alpha_linolenic_acid_100g eicosapentaenoic_acid_100g docosahexaenoic_acid_100g
+## 1               NA                        NA                         NA                        NA
+## 2               NA                        NA                         NA                        NA
+## 3               NA                        NA                         NA                        NA
+## 4               NA                        NA                         NA                        NA
+## 5               NA                        NA                         NA                        NA
+## 6               NA                        NA                         NA                        NA
+##   omega_6_fat_100g linoleic_acid_100g arachidonic_acid_100g gamma_linolenic_acid_100g
+## 1               NA                 NA                    NA                        NA
+## 2               NA                 NA                    NA                        NA
+## 3               NA                 NA                    NA                        NA
+## 4               NA                 NA                    NA                        NA
+## 5               NA                 NA                    NA                        NA
+## 6               NA                 NA                    NA                        NA
+##   dihomo_gamma_linolenic_acid_100g omega_9_fat_100g oleic_acid_100g elaidic_acid_100g
+## 1                               NA               NA              NA                NA
+## 2                               NA               NA              NA                NA
+## 3                               NA               NA              NA                NA
+## 4                               NA               NA              NA                NA
+## 5                               NA               NA              NA                NA
+## 6                               NA               NA              NA                NA
+##   gondoic_acid_100g mead_acid_100g erucic_acid_100g nervonic_acid_100g trans_fat_100g cholesterol_100g
+## 1                NA             NA               NA                 NA             NA               NA
+## 2                NA             NA               NA                 NA             NA               NA
+## 3                NA             NA               NA                 NA             NA               NA
+## 4                NA             NA               NA                 NA             NA            2e-04
+## 5                NA             NA               NA                 NA             NA               NA
+## 6                NA             NA               NA                 NA             NA               NA
+##   carbohydrates_100g sugars_100g sucrose_100g glucose_100g fructose_100g lactose_100g maltose_100g
+## 1               54.0        54.0           NA           NA            NA           NA           NA
+## 2                 NA          NA           NA           NA            NA           NA           NA
+## 3                 NA          NA           NA           NA            NA           NA           NA
+## 4                5.7         4.2           NA           NA            NA           NA           NA
+## 5               17.3         2.7           NA           NA            NA           NA           NA
+## 6                 NA          NA           NA           NA            NA           NA           NA
+##   maltodextrins_100g starch_100g polyols_100g fiber_100g proteins_100g casein_100g serum_proteins_100g
+## 1                 NA          NA           NA         NA           0.0          NA                  NA
+## 2                 NA          NA           NA         NA            NA          NA                  NA
+## 3                 NA          NA           NA         NA            NA          NA                  NA
+## 4                 NA          NA           NA        0.2           2.9          NA                  NA
+## 5                 NA          NA           NA        9.0          18.2          NA                  NA
+## 6                 NA          NA           NA         NA            NA          NA                  NA
+##   nucleotides_100g salt_100g sodium_100g alcohol_100g vitamin_a_100g beta_carotene_100g vitamin_d_100g
+## 1               NA    0.0000        0.00           NA             NA                 NA             NA
+## 2               NA        NA          NA           NA             NA                 NA             NA
+## 3               NA        NA          NA           NA             NA                 NA             NA
+## 4               NA    0.0508        0.02           NA             NA                 NA             NA
+## 5               NA    3.9878        1.57           NA             NA                 NA             NA
+## 6               NA        NA          NA           NA             NA                 NA             NA
+##   vitamin_e_100g vitamin_k_100g vitamin_c_100g vitamin_b1_100g vitamin_b2_100g vitamin_pp_100g
+## 1             NA             NA             NA              NA              NA              NA
+## 2             NA             NA             NA              NA              NA              NA
+## 3             NA             NA             NA              NA              NA              NA
+## 4             NA             NA             NA              NA              NA              NA
+## 5             NA             NA             NA              NA              NA              NA
+## 6             NA             NA             NA              NA              NA              NA
+##   vitamin_b6_100g vitamin_b9_100g vitamin_b12_100g biotin_100g pantothenic_acid_100g silica_100g
+## 1              NA              NA               NA          NA                    NA          NA
+## 2              NA              NA               NA          NA                    NA          NA
+## 3              NA              NA               NA          NA                    NA          NA
+## 4              NA              NA               NA          NA                    NA          NA
+## 5              NA              NA               NA          NA                    NA          NA
+## 6              NA              NA               NA          NA                    NA          NA
+##   bicarbonate_100g potassium_100g chloride_100g calcium_100g phosphorus_100g iron_100g magnesium_100g
+## 1               NA             NA            NA           NA              NA        NA             NA
+## 2               NA             NA            NA           NA              NA        NA             NA
+## 3               NA             NA            NA           NA              NA        NA             NA
+## 4               NA             NA            NA           NA              NA        NA             NA
+## 5               NA             NA            NA           NA           1.155    0.0038          0.129
+## 6               NA             NA            NA           NA              NA        NA             NA
+##   zinc_100g copper_100g manganese_100g fluoride_100g selenium_100g chromium_100g molybdenum_100g
+## 1        NA          NA             NA            NA            NA            NA              NA
+## 2        NA          NA             NA            NA            NA            NA              NA
+## 3        NA          NA             NA            NA            NA            NA              NA
+## 4        NA          NA             NA            NA            NA            NA              NA
+## 5        NA          NA             NA            NA            NA            NA              NA
+## 6        NA          NA             NA            NA            NA            NA              NA
+##   iodine_100g caffeine_100g taurine_100g ph_100g fruits_vegetables_nuts_100g
+## 1          NA            NA           NA      NA                          54
+## 2          NA            NA           NA      NA                          NA
+## 3          NA            NA           NA      NA                          NA
+## 4          NA            NA           NA      NA                          NA
+## 5          NA            NA           NA      NA                          NA
+## 6          NA            NA           NA      NA                          NA
+##   collagen_meat_protein_ratio_100g cocoa_100g chlorophyl_100g carbon_footprint_100g
+## 1                               NA         NA              NA                    NA
+## 2                               NA         NA              NA                    NA
+## 3                               NA         NA              NA                    NA
+## 4                               NA         NA              NA                    NA
+## 5                               NA         NA              NA                    NA
+## 6                               NA         NA              NA                    NA
+##   nutrition_score_fr_100g nutrition_score_uk_100g
+## 1                      11                      11
+## 2                      NA                      NA
+## 3                      NA                      NA
+## 4                      11                      11
+## 5                      17                      17
+## 6                      NA                      NA</code></pre>
+<pre class="r"><code># View structure of food
+str(food)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    1500 obs. of  160 variables:
+##  $ V1                                        : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ code                                      : int  100030 100050 100079 100094 100124 100136 100194 100221 100257 100258 ...
+##  $ url                                       : chr  &quot;http://world-en.openfoodfacts.org/product/3222475745867/confiture-de-fraise-fraise-des-bois-au-sucre-de-canne-casino-delices&quot; &quot;http://world-en.openfoodfacts.org/product/5410976880110/guylian-sea-shells-selection&quot; &quot;http://world-en.openfoodfacts.org/product/3264750423503/pates-de-fruits-aromatisees-jacquot&quot; &quot;http://world-en.openfoodfacts.org/product/8006040247001/nata-vegetal-a-base-de-soja-valsoia&quot; ...
+##  $ creator                                   : chr  &quot;sebleouf&quot; &quot;foodorigins&quot; &quot;domdom26&quot; &quot;javichu&quot; ...
+##  $ created_t                                 : int  1424747544 1450316429 1428674916 1420416591 1420501121 1437983923 1442420988 1435686217 1436991777 1400516512 ...
+##  $ created_datetime                          : chr  &quot;2015-02-24T03:12:24Z&quot; &quot;2015-12-17T01:40:29Z&quot; &quot;2015-04-10T14:08:36Z&quot; &quot;2015-01-05T00:09:51Z&quot; ...
+##  $ last_modified_t                           : int  1438445887 1450817956 1428739289 1420417876 1445700917 1445577476 1442420988 1451405288 1436991779 1437236856 ...
+##  $ last_modified_datetime                    : chr  &quot;2015-08-01T16:18:07Z&quot; &quot;2015-12-22T20:59:16Z&quot; &quot;2015-04-11T08:01:29Z&quot; &quot;2015-01-05T00:31:16Z&quot; ...
+##  $ product_name                              : chr  &quot;Confiture de fraise fraise des bois au sucre de canne&quot; &quot;Guylian Sea Shells Selection&quot; &quot;PÃ¢tes de fruits aromatisÃ©es&quot; &quot;Nata vegetal a base de soja &amp;quot;Valsoia&amp;quot;&quot; ...
+##  $ generic_name                              : chr  &quot;&quot; &quot;&quot; &quot;PÃ¢tes de fruits&quot; &quot;Nata vegetal a base de soja&quot; ...
+##  $ quantity                                  : chr  &quot;265 g&quot; &quot;375g&quot; &quot;1 kg&quot; &quot;200 ml&quot; ...
+##  $ packaging                                 : chr  &quot;Bocal,Verre&quot; &quot;Plastic,Box&quot; &quot;Carton,plastique&quot; &quot;Tetra Brik&quot; ...
+##  $ packaging_tags                            : chr  &quot;bocal,verre&quot; &quot;plastic,box&quot; &quot;carton,plastique&quot; &quot;tetra-brik&quot; ...
+##  $ brands                                    : chr  &quot;Casino DÃ©lices&quot; &quot;Guylian&quot; &quot;Jacquot&quot; &quot;Valsoia,//Propiedad de://,Valsoia S.p.A.&quot; ...
+##  $ brands_tags                               : chr  &quot;casino-delices&quot; &quot;guylian&quot; &quot;jacquot&quot; &quot;valsoia,propiedad-de,valsoia-s-p-a&quot; ...
+##  $ categories                                : chr  &quot;Aliments et boissons Ã  base de vÃ©gÃ©taux,Aliments d&#39;origine vÃ©gÃ©tale,Aliments Ã  base de fruits et de lÃ©gu&quot;| __truncated__ &quot;Chocolate&quot; &quot;pÃ¢tes de fruits&quot; &quot;Alimentos y bebidas de origen vegetal,Alimentos de origen vegetal,Natas vegetales,Natas vegetales a base de soj&quot;| __truncated__ ...
+##  $ categories_tags                           : chr  &quot;en:plant-based-foods-and-beverages,en:plant-based-foods,en:fruits-and-vegetables-based-foods,en:breakfasts,en:s&quot;| __truncated__ &quot;en:sugary-snacks,en:chocolates&quot; &quot;en:plant-based-foods-and-beverages,en:plant-based-foods,en:fruits-and-vegetables-based-foods,en:sugary-snacks,e&quot;| __truncated__ &quot;en:plant-based-foods-and-beverages,en:plant-based-foods,en:plant-based-creams,en:plant-based-creams-for-cooking&quot;| __truncated__ ...
+##  $ categories_en                             : chr  &quot;Plant-based foods and beverages,Plant-based foods,Fruits and vegetables based foods,Breakfasts,Spreads,Fruits b&quot;| __truncated__ &quot;Sugary snacks,Chocolates&quot; &quot;Plant-based foods and beverages,Plant-based foods,Fruits and vegetables based foods,Sugary snacks,Confectioneri&quot;| __truncated__ &quot;Plant-based foods and beverages,Plant-based foods,Plant-based creams,Plant-based creams for cooking,Soy-based c&quot;| __truncated__ ...
+##  $ origins                                   : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ origins_tags                              : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ manufacturing_places                      : chr  &quot;France&quot; &quot;Belgium&quot; &quot;&quot; &quot;Italia&quot; ...
+##  $ manufacturing_places_tags                 : chr  &quot;france&quot; &quot;belgium&quot; &quot;&quot; &quot;italia&quot; ...
+##  $ labels                                    : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;Vegetariano,Vegano,Sin gluten,Sin OMG,Sin lactosa&quot; ...
+##  $ labels_tags                               : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;en:vegetarian,en:vegan,en:gluten-free,en:no-gmos,en:no-lactose&quot; ...
+##  $ labels_en                                 : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;Vegetarian,Vegan,Gluten-free,No GMOs,No lactose&quot; ...
+##  $ emb_codes                                 : chr  &quot;EMB 78015&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ emb_codes_tags                            : chr  &quot;emb-78015&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ first_packaging_code_geo                  : chr  &quot;48.983333,2.066667&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ cities                                    : logi  NA NA NA NA NA NA ...
+##  $ cities_tags                               : chr  &quot;andresy-yvelines-france&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ purchase_places                           : chr  &quot;Lyon,France&quot; &quot;NSW,Australia&quot; &quot;France&quot; &quot;Madrid,EspaÃ±a&quot; ...
+##  $ stores                                    : chr  &quot;Casino&quot; &quot;&quot; &quot;&quot; &quot;El Corte InglÃ©s&quot; ...
+##  $ countries                                 : chr  &quot;France&quot; &quot;Australia&quot; &quot;France&quot; &quot;EspaÃ±a&quot; ...
+##  $ countries_tags                            : chr  &quot;en:france&quot; &quot;en:australia&quot; &quot;en:france&quot; &quot;en:spain&quot; ...
+##  $ countries_en                              : chr  &quot;France&quot; &quot;Australia&quot; &quot;France&quot; &quot;Spain&quot; ...
+##  $ ingredients_text                          : chr  &quot;Sucre de canne, fraises 40 g, fraises des bois 14 g, gÃ©lifiant : pectines de fruits, jus de citron concentrÃ©.&quot;| __truncated__ &quot;&quot; &quot;Pulpe de pommes 50% , sucre, sirop de glucose, gÃ©lifiant : pectine, acidifiant : acide citrique, arÃ´mes, colo&quot;| __truncated__ &quot;Extracto de soja (78%) (agua, semillas de soja 8,3%), grasas vegetales, jarabe de glucosa, dextrosa, emulsionan&quot;| __truncated__ ...
+##  $ allergens                                 : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ allergens_en                              : logi  NA NA NA NA NA NA ...
+##  $ traces                                    : chr  &quot;Lait,Fruits Ã  coque&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ traces_tags                               : chr  &quot;en:milk,en:nuts&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ traces_en                                 : chr  &quot;Milk,Nuts&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ serving_size                              : chr  &quot;15 g&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ no_nutriments                             : logi  NA NA NA NA NA NA ...
+##  $ additives_n                               : int  1 NA 2 5 0 NA NA 0 NA 1 ...
+##  $ additives                                 : chr  &quot;[ sucre-de-canne -&gt; fr:sucre-de-canne  ]  [ sucre-de -&gt; fr:sucre-de  ]  [ sucre -&gt; fr:sucre  ]  [ fraises-40-g &quot;| __truncated__ &quot;&quot; &quot;[ pulpe-de-pommes-50 -&gt; fr:pulpe-de-pommes-50  ]  [ pulpe-de-pommes -&gt; fr:pulpe-de-pommes  ]  [ pulpe-de -&gt; fr:&quot;| __truncated__ &quot;[ extracto-de-soja -&gt; es:extracto-de-soja  ]  [ 78 -&gt; es:78  ]  [ agua -&gt; es:agua  ]  [ semillas-de-soja-8 -&gt; e&quot;| __truncated__ ...
+##  $ additives_tags                            : chr  &quot;en:e440&quot; &quot;&quot; &quot;en:e440,en:e330&quot; &quot;en:e471,en:e415,en:e407,en:e412,en:e306&quot; ...
+##  $ additives_en                              : chr  &quot;E440 - Pectins&quot; &quot;&quot; &quot;E440 - Pectins,E330 - Citric acid&quot; &quot;E471 - Mono- and diglycerides of fatty acids,E415 - Xanthan gum,E407 - Carrageenan,E412 - Guar gum,E306 - Tocop&quot;| __truncated__ ...
+##  $ ingredients_from_palm_oil_n               : int  0 NA 0 0 0 NA NA 0 NA 0 ...
+##  $ ingredients_from_palm_oil                 : logi  NA NA NA NA NA NA ...
+##  $ ingredients_from_palm_oil_tags            : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ ingredients_that_may_be_from_palm_oil_n   : int  0 NA 0 1 0 NA NA 0 NA 0 ...
+##  $ ingredients_that_may_be_from_palm_oil     : logi  NA NA NA NA NA NA ...
+##  $ ingredients_that_may_be_from_palm_oil_tags: chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;e471-mono-et-diglycerides-d-acides-gras-alimentaires&quot; ...
+##  $ nutrition_grade_uk                        : logi  NA NA NA NA NA NA ...
+##  $ nutrition_grade_fr                        : chr  &quot;d&quot; &quot;&quot; &quot;&quot; &quot;d&quot; ...
+##  $ pnns_groups_1                             : chr  &quot;Sugary snacks&quot; &quot;Sugary snacks&quot; &quot;Fruits and vegetables&quot; &quot;unknown&quot; ...
+##  $ pnns_groups_2                             : chr  &quot;Sweets&quot; &quot;Chocolate products&quot; &quot;Fruits&quot; &quot;unknown&quot; ...
+##  $ states                                    : chr  &quot;en:to-be-checked, en:complete, en:nutrition-facts-completed, en:ingredients-completed, en:expiration-date-to-be&quot;| __truncated__ &quot;en:to-be-completed, en:nutrition-facts-to-be-completed, en:ingredients-to-be-completed, en:expiration-date-to-b&quot;| __truncated__ &quot;en:to-be-checked, en:complete, en:nutrition-facts-completed, en:ingredients-completed, en:expiration-date-to-be&quot;| __truncated__ &quot;en:to-be-checked, en:complete, en:nutrition-facts-completed, en:ingredients-completed, en:expiration-date-compl&quot;| __truncated__ ...
+##  $ states_tags                               : chr  &quot;en:to-be-checked,en:complete,en:nutrition-facts-completed,en:ingredients-completed,en:expiration-date-to-be-com&quot;| __truncated__ &quot;en:to-be-completed,en:nutrition-facts-to-be-completed,en:ingredients-to-be-completed,en:expiration-date-to-be-c&quot;| __truncated__ &quot;en:to-be-checked,en:complete,en:nutrition-facts-completed,en:ingredients-completed,en:expiration-date-to-be-com&quot;| __truncated__ &quot;en:to-be-checked,en:complete,en:nutrition-facts-completed,en:ingredients-completed,en:expiration-date-completed&quot;| __truncated__ ...
+##  $ states_en                                 : chr  &quot;To be checked,Complete,Nutrition facts completed,Ingredients completed,Expiration date to be completed,Characte&quot;| __truncated__ &quot;To be completed,Nutrition facts to be completed,Ingredients to be completed,Expiration date to be completed,Cha&quot;| __truncated__ &quot;To be checked,Complete,Nutrition facts completed,Ingredients completed,Expiration date to be completed,Characte&quot;| __truncated__ &quot;To be checked,Complete,Nutrition facts completed,Ingredients completed,Expiration date completed,Characteristic&quot;| __truncated__ ...
+##  $ main_category                             : chr  &quot;en:plant-based-foods-and-beverages&quot; &quot;en:sugary-snacks&quot; &quot;en:plant-based-foods-and-beverages&quot; &quot;en:plant-based-foods-and-beverages&quot; ...
+##  $ main_category_en                          : chr  &quot;Plant-based foods and beverages&quot; &quot;Sugary snacks&quot; &quot;Plant-based foods and beverages&quot; &quot;Plant-based foods and beverages&quot; ...
+##  $ image_url                                 : chr  &quot;http://en.openfoodfacts.org/images/products/322/247/574/5867/front.8.400.jpg&quot; &quot;http://en.openfoodfacts.org/images/products/541/097/688/0110/front.7.400.jpg&quot; &quot;http://en.openfoodfacts.org/images/products/326/475/042/3503/front.6.400.jpg&quot; &quot;http://en.openfoodfacts.org/images/products/800/604/024/7001/front.7.400.jpg&quot; ...
+##  $ image_small_url                           : chr  &quot;http://en.openfoodfacts.org/images/products/322/247/574/5867/front.8.200.jpg&quot; &quot;http://en.openfoodfacts.org/images/products/541/097/688/0110/front.7.200.jpg&quot; &quot;http://en.openfoodfacts.org/images/products/326/475/042/3503/front.6.200.jpg&quot; &quot;http://en.openfoodfacts.org/images/products/800/604/024/7001/front.7.200.jpg&quot; ...
+##  $ energy_100g                               : num  918 NA NA 766 2359 ...
+##  $ energy_from_fat_100g                      : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ fat_100g                                  : num  0 NA NA 16.7 45.5 NA NA 25 NA 4 ...
+##  $ saturated_fat_100g                        : num  0 NA NA 9.9 5.2 NA NA 17 NA 0.54 ...
+##  $ butyric_acid_100g                         : logi  NA NA NA NA NA NA ...
+##  $ caproic_acid_100g                         : logi  NA NA NA NA NA NA ...
+##  $ caprylic_acid_100g                        : logi  NA NA NA NA NA NA ...
+##  $ capric_acid_100g                          : logi  NA NA NA NA NA NA ...
+##  $ lauric_acid_100g                          : logi  NA NA NA NA NA NA ...
+##  $ myristic_acid_100g                        : logi  NA NA NA NA NA NA ...
+##  $ palmitic_acid_100g                        : logi  NA NA NA NA NA NA ...
+##  $ stearic_acid_100g                         : logi  NA NA NA NA NA NA ...
+##  $ arachidic_acid_100g                       : logi  NA NA NA NA NA NA ...
+##  $ behenic_acid_100g                         : logi  NA NA NA NA NA NA ...
+##  $ lignoceric_acid_100g                      : logi  NA NA NA NA NA NA ...
+##  $ cerotic_acid_100g                         : logi  NA NA NA NA NA NA ...
+##  $ montanic_acid_100g                        : logi  NA NA NA NA NA NA ...
+##  $ melissic_acid_100g                        : logi  NA NA NA NA NA NA ...
+##  $ monounsaturated_fat_100g                  : num  NA NA NA 2.9 9.5 NA NA NA NA NA ...
+##  $ polyunsaturated_fat_100g                  : num  NA NA NA 3.9 32.8 NA NA NA NA NA ...
+##  $ omega_3_fat_100g                          : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ alpha_linolenic_acid_100g                 : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ eicosapentaenoic_acid_100g                : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ docosahexaenoic_acid_100g                 : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ omega_6_fat_100g                          : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ linoleic_acid_100g                        : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ arachidonic_acid_100g                     : logi  NA NA NA NA NA NA ...
+##  $ gamma_linolenic_acid_100g                 : logi  NA NA NA NA NA NA ...
+##  $ dihomo_gamma_linolenic_acid_100g          : logi  NA NA NA NA NA NA ...
+##  $ omega_9_fat_100g                          : logi  NA NA NA NA NA NA ...
+##  $ oleic_acid_100g                           : logi  NA NA NA NA NA NA ...
+##  $ elaidic_acid_100g                         : logi  NA NA NA NA NA NA ...
+##  $ gondoic_acid_100g                         : logi  NA NA NA NA NA NA ...
+##  $ mead_acid_100g                            : logi  NA NA NA NA NA NA ...
+##  $ erucic_acid_100g                          : logi  NA NA NA NA NA NA ...
+##   [list output truncated]</code></pre>
+</div>
+<div id="inspecting-variables" class="section level3">
+<h3>Inspecting variables</h3>
+<p>The str(), head(), and summary() functions are designed to give you some information about a dataset without being overwhelming. However, this dataset is so large and has so many variables that even these outputs seemed pretty intimidating!</p>
+<p>The glimpse() function from the dplyr package often formats information in a more approachable way.</p>
+<p>Yet another option is to just look at the column names to see what kinds of data you have. As you look at the names, pay particular attention to any pairs that look like duplicates.</p>
+<pre class="r"><code># Load dplyr
+library(dplyr)
+
+# View a glimpse of food
+glimpse(food)</code></pre>
+<pre><code>## Observations: 1,500
+## Variables: 160
+## $ V1                                         &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, ...
+## $ code                                       &lt;int&gt; 100030, 100050, 100079, 100094, 100124, 100136,...
+## $ url                                        &lt;chr&gt; &quot;http://world-en.openfoodfacts.org/product/3222...
+## $ creator                                    &lt;chr&gt; &quot;sebleouf&quot;, &quot;foodorigins&quot;, &quot;domdom26&quot;, &quot;javichu...
+## $ created_t                                  &lt;int&gt; 1424747544, 1450316429, 1428674916, 1420416591,...
+## $ created_datetime                           &lt;chr&gt; &quot;2015-02-24T03:12:24Z&quot;, &quot;2015-12-17T01:40:29Z&quot;,...
+## $ last_modified_t                            &lt;int&gt; 1438445887, 1450817956, 1428739289, 1420417876,...
+## $ last_modified_datetime                     &lt;chr&gt; &quot;2015-08-01T16:18:07Z&quot;, &quot;2015-12-22T20:59:16Z&quot;,...
+## $ product_name                               &lt;chr&gt; &quot;Confiture de fraise fraise des bois au sucre d...
+## $ generic_name                               &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;PÃ¢tes de fruits&quot;, &quot;Nata vegetal a bas...
+## $ quantity                                   &lt;chr&gt; &quot;265 g&quot;, &quot;375g&quot;, &quot;1 kg&quot;, &quot;200 ml&quot;, &quot;200 g&quot;, &quot;&quot;,...
+## $ packaging                                  &lt;chr&gt; &quot;Bocal,Verre&quot;, &quot;Plastic,Box&quot;, &quot;Carton,plastique...
+## $ packaging_tags                             &lt;chr&gt; &quot;bocal,verre&quot;, &quot;plastic,box&quot;, &quot;carton,plastique...
+## $ brands                                     &lt;chr&gt; &quot;Casino DÃ©lices&quot;, &quot;Guylian&quot;, &quot;Jacquot&quot;, &quot;Valso...
+## $ brands_tags                                &lt;chr&gt; &quot;casino-delices&quot;, &quot;guylian&quot;, &quot;jacquot&quot;, &quot;valsoi...
+## $ categories                                 &lt;chr&gt; &quot;Aliments et boissons Ã  base de vÃ©gÃ©taux,Ali...
+## $ categories_tags                            &lt;chr&gt; &quot;en:plant-based-foods-and-beverages,en:plant-ba...
+## $ categories_en                              &lt;chr&gt; &quot;Plant-based foods and beverages,Plant-based fo...
+## $ origins                                    &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;Argentina&quot;, &quot;South Korea&quot;, &quot;&quot;,...
+## $ origins_tags                               &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;argentina&quot;, &quot;south-korea&quot;, &quot;&quot;,...
+## $ manufacturing_places                       &lt;chr&gt; &quot;France&quot;, &quot;Belgium&quot;, &quot;&quot;, &quot;Italia&quot;, &quot;Beniparrell...
+## $ manufacturing_places_tags                  &lt;chr&gt; &quot;france&quot;, &quot;belgium&quot;, &quot;&quot;, &quot;italia&quot;, &quot;beniparrell...
+## $ labels                                     &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;Vegetariano,Vegano,Sin gluten,Sin ...
+## $ labels_tags                                &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;en:vegetarian,en:vegan,en:gluten-f...
+## $ labels_en                                  &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;Vegetarian,Vegan,Gluten-free,No GM...
+## $ emb_codes                                  &lt;chr&gt; &quot;EMB 78015&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ES 21.016540/V EC,ENV...
+## $ emb_codes_tags                             &lt;chr&gt; &quot;emb-78015&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;es-21-016540-v-ec,env...
+## $ first_packaging_code_geo                   &lt;chr&gt; &quot;48.983333,2.066667&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;...
+## $ cities                                     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ cities_tags                                &lt;chr&gt; &quot;andresy-yvelines-france&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, ...
+## $ purchase_places                            &lt;chr&gt; &quot;Lyon,France&quot;, &quot;NSW,Australia&quot;, &quot;France&quot;, &quot;Madr...
+## $ stores                                     &lt;chr&gt; &quot;Casino&quot;, &quot;&quot;, &quot;&quot;, &quot;El Corte InglÃ©s&quot;, &quot;Mercadon...
+## $ countries                                  &lt;chr&gt; &quot;France&quot;, &quot;Australia&quot;, &quot;France&quot;, &quot;EspaÃ±a&quot;, &quot;Es...
+## $ countries_tags                             &lt;chr&gt; &quot;en:france&quot;, &quot;en:australia&quot;, &quot;en:france&quot;, &quot;en:s...
+## $ countries_en                               &lt;chr&gt; &quot;France&quot;, &quot;Australia&quot;, &quot;France&quot;, &quot;Spain&quot;, &quot;Spai...
+## $ ingredients_text                           &lt;chr&gt; &quot;Sucre de canne, fraises 40 g, fraises des bois...
+## $ allergens                                  &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;blÃ©, lait...
+## $ allergens_en                               &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ traces                                     &lt;chr&gt; &quot;Lait,Fruits Ã  coque&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;Frutos de ...
+## $ traces_tags                                &lt;chr&gt; &quot;en:milk,en:nuts&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;en:nuts,en:pean...
+## $ traces_en                                  &lt;chr&gt; &quot;Milk,Nuts&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;Nuts,Peanuts&quot;, &quot;&quot;, &quot;&quot;...
+## $ serving_size                               &lt;chr&gt; &quot;15 g&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;280 g ...
+## $ no_nutriments                              &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ additives_n                                &lt;int&gt; 1, NA, 2, 5, 0, NA, NA, 0, NA, 1, 1, 1, 1, 0, 0...
+## $ additives                                  &lt;chr&gt; &quot;[ sucre-de-canne -&gt; fr:sucre-de-canne  ]  [ su...
+## $ additives_tags                             &lt;chr&gt; &quot;en:e440&quot;, &quot;&quot;, &quot;en:e440,en:e330&quot;, &quot;en:e471,en:e...
+## $ additives_en                               &lt;chr&gt; &quot;E440 - Pectins&quot;, &quot;&quot;, &quot;E440 - Pectins,E330 - Ci...
+## $ ingredients_from_palm_oil_n                &lt;int&gt; 0, NA, 0, 0, 0, NA, NA, 0, NA, 0, 0, 0, 0, 0, 0...
+## $ ingredients_from_palm_oil                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ ingredients_from_palm_oil_tags             &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,...
+## $ ingredients_that_may_be_from_palm_oil_n    &lt;int&gt; 0, NA, 0, 1, 0, NA, NA, 0, NA, 0, 0, 0, 0, 0, 0...
+## $ ingredients_that_may_be_from_palm_oil      &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ ingredients_that_may_be_from_palm_oil_tags &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;e471-mono-et-diglycerides-d-acides...
+## $ nutrition_grade_uk                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ nutrition_grade_fr                         &lt;chr&gt; &quot;d&quot;, &quot;&quot;, &quot;&quot;, &quot;d&quot;, &quot;d&quot;, &quot;&quot;, &quot;&quot;, &quot;c&quot;, &quot;&quot;, &quot;a&quot;, &quot;&quot;...
+## $ pnns_groups_1                              &lt;chr&gt; &quot;Sugary snacks&quot;, &quot;Sugary snacks&quot;, &quot;Fruits and v...
+## $ pnns_groups_2                              &lt;chr&gt; &quot;Sweets&quot;, &quot;Chocolate products&quot;, &quot;Fruits&quot;, &quot;unkn...
+## $ states                                     &lt;chr&gt; &quot;en:to-be-checked, en:complete, en:nutrition-fa...
+## $ states_tags                                &lt;chr&gt; &quot;en:to-be-checked,en:complete,en:nutrition-fact...
+## $ states_en                                  &lt;chr&gt; &quot;To be checked,Complete,Nutrition facts complet...
+## $ main_category                              &lt;chr&gt; &quot;en:plant-based-foods-and-beverages&quot;, &quot;en:sugar...
+## $ main_category_en                           &lt;chr&gt; &quot;Plant-based foods and beverages&quot;, &quot;Sugary snac...
+## $ image_url                                  &lt;chr&gt; &quot;http://en.openfoodfacts.org/images/products/32...
+## $ image_small_url                            &lt;chr&gt; &quot;http://en.openfoodfacts.org/images/products/32...
+## $ energy_100g                                &lt;dbl&gt; 918, NA, NA, 766, 2359, NA, NA, 1198, NA, 469, ...
+## $ energy_from_fat_100g                       &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ fat_100g                                   &lt;dbl&gt; 0.00, NA, NA, 16.70, 45.50, NA, NA, 25.00, NA, ...
+## $ saturated_fat_100g                         &lt;dbl&gt; 0.000, NA, NA, 9.900, 5.200, NA, NA, 17.000, NA...
+## $ butyric_acid_100g                          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ caproic_acid_100g                          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ caprylic_acid_100g                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ capric_acid_100g                           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ lauric_acid_100g                           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ myristic_acid_100g                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ palmitic_acid_100g                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ stearic_acid_100g                          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ arachidic_acid_100g                        &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ behenic_acid_100g                          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ lignoceric_acid_100g                       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ cerotic_acid_100g                          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ montanic_acid_100g                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ melissic_acid_100g                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ monounsaturated_fat_100g                   &lt;dbl&gt; NA, NA, NA, 2.9, 9.5, NA, NA, NA, NA, NA, NA, N...
+## $ polyunsaturated_fat_100g                   &lt;dbl&gt; NA, NA, NA, 3.9, 32.8, NA, NA, NA, NA, NA, NA, ...
+## $ omega_3_fat_100g                           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ alpha_linolenic_acid_100g                  &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ eicosapentaenoic_acid_100g                 &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ docosahexaenoic_acid_100g                  &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ omega_6_fat_100g                           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ linoleic_acid_100g                         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ arachidonic_acid_100g                      &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ gamma_linolenic_acid_100g                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ dihomo_gamma_linolenic_acid_100g           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ omega_9_fat_100g                           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ oleic_acid_100g                            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ elaidic_acid_100g                          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ gondoic_acid_100g                          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ mead_acid_100g                             &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ erucic_acid_100g                           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ nervonic_acid_100g                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ trans_fat_100g                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ cholesterol_100g                           &lt;dbl&gt; NA, NA, NA, 0.00020, NA, NA, NA, NA, NA, NA, NA...
+## $ carbohydrates_100g                         &lt;dbl&gt; 54.00, NA, NA, 5.70, 17.30, NA, NA, 0.80, NA, 1...
+## $ sugars_100g                                &lt;dbl&gt; 54.00, NA, NA, 4.20, 2.70, NA, NA, 0.50, NA, 1....
+## $ sucrose_100g                               &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ glucose_100g                               &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ fructose_100g                              &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ lactose_100g                               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ maltose_100g                               &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ maltodextrins_100g                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ starch_100g                                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ polyols_100g                               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ fiber_100g                                 &lt;dbl&gt; NA, NA, NA, 0.2, 9.0, NA, NA, NA, NA, 1.6, NA, ...
+## $ proteins_100g                              &lt;dbl&gt; 0.00, NA, NA, 2.90, 18.20, NA, NA, 15.00, NA, 6...
+## $ casein_100g                                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ serum_proteins_100g                        &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ nucleotides_100g                           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ salt_100g                                  &lt;dbl&gt; 0.0000000, NA, NA, 0.0508000, 3.9878000, NA, NA...
+## $ sodium_100g                                &lt;dbl&gt; 0.00000000, NA, NA, 0.02000000, 1.57000000, NA,...
+## $ alcohol_100g                               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ vitamin_a_100g                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ beta_carotene_100g                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ vitamin_d_100g                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ vitamin_e_100g                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ vitamin_k_100g                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ vitamin_c_100g                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ vitamin_b1_100g                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ vitamin_b2_100g                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ vitamin_pp_100g                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ vitamin_b6_100g                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ vitamin_b9_100g                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ vitamin_b12_100g                           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ biotin_100g                                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ pantothenic_acid_100g                      &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ silica_100g                                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ bicarbonate_100g                           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ potassium_100g                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ chloride_100g                              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ calcium_100g                               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ phosphorus_100g                            &lt;dbl&gt; NA, NA, NA, NA, 1.155, NA, NA, NA, NA, NA, NA, ...
+## $ iron_100g                                  &lt;dbl&gt; NA, NA, NA, NA, 0.00380, NA, NA, NA, NA, NA, NA...
+## $ magnesium_100g                             &lt;dbl&gt; NA, NA, NA, NA, 0.129, NA, NA, NA, NA, NA, NA, ...
+## $ zinc_100g                                  &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ copper_100g                                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ manganese_100g                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ fluoride_100g                              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ selenium_100g                              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ chromium_100g                              &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ molybdenum_100g                            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ iodine_100g                                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ caffeine_100g                              &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ taurine_100g                               &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ ph_100g                                    &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ fruits_vegetables_nuts_100g                &lt;dbl&gt; 54, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ collagen_meat_protein_ratio_100g           &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ cocoa_100g                                 &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ chlorophyl_100g                            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ carbon_footprint_100g                      &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ nutrition_score_fr_100g                    &lt;int&gt; 11, NA, NA, 11, 17, NA, NA, 10, NA, -1, NA, -3,...
+## $ nutrition_score_uk_100g                    &lt;int&gt; 11, NA, NA, 11, 17, NA, NA, 15, NA, -1, NA, -3,...</code></pre>
+<pre class="r"><code># View column names of food
+names(food)</code></pre>
+<pre><code>##   [1] &quot;V1&quot;                                         &quot;code&quot;                                      
+##   [3] &quot;url&quot;                                        &quot;creator&quot;                                   
+##   [5] &quot;created_t&quot;                                  &quot;created_datetime&quot;                          
+##   [7] &quot;last_modified_t&quot;                            &quot;last_modified_datetime&quot;                    
+##   [9] &quot;product_name&quot;                               &quot;generic_name&quot;                              
+##  [11] &quot;quantity&quot;                                   &quot;packaging&quot;                                 
+##  [13] &quot;packaging_tags&quot;                             &quot;brands&quot;                                    
+##  [15] &quot;brands_tags&quot;                                &quot;categories&quot;                                
+##  [17] &quot;categories_tags&quot;                            &quot;categories_en&quot;                             
+##  [19] &quot;origins&quot;                                    &quot;origins_tags&quot;                              
+##  [21] &quot;manufacturing_places&quot;                       &quot;manufacturing_places_tags&quot;                 
+##  [23] &quot;labels&quot;                                     &quot;labels_tags&quot;                               
+##  [25] &quot;labels_en&quot;                                  &quot;emb_codes&quot;                                 
+##  [27] &quot;emb_codes_tags&quot;                             &quot;first_packaging_code_geo&quot;                  
+##  [29] &quot;cities&quot;                                     &quot;cities_tags&quot;                               
+##  [31] &quot;purchase_places&quot;                            &quot;stores&quot;                                    
+##  [33] &quot;countries&quot;                                  &quot;countries_tags&quot;                            
+##  [35] &quot;countries_en&quot;                               &quot;ingredients_text&quot;                          
+##  [37] &quot;allergens&quot;                                  &quot;allergens_en&quot;                              
+##  [39] &quot;traces&quot;                                     &quot;traces_tags&quot;                               
+##  [41] &quot;traces_en&quot;                                  &quot;serving_size&quot;                              
+##  [43] &quot;no_nutriments&quot;                              &quot;additives_n&quot;                               
+##  [45] &quot;additives&quot;                                  &quot;additives_tags&quot;                            
+##  [47] &quot;additives_en&quot;                               &quot;ingredients_from_palm_oil_n&quot;               
+##  [49] &quot;ingredients_from_palm_oil&quot;                  &quot;ingredients_from_palm_oil_tags&quot;            
+##  [51] &quot;ingredients_that_may_be_from_palm_oil_n&quot;    &quot;ingredients_that_may_be_from_palm_oil&quot;     
+##  [53] &quot;ingredients_that_may_be_from_palm_oil_tags&quot; &quot;nutrition_grade_uk&quot;                        
+##  [55] &quot;nutrition_grade_fr&quot;                         &quot;pnns_groups_1&quot;                             
+##  [57] &quot;pnns_groups_2&quot;                              &quot;states&quot;                                    
+##  [59] &quot;states_tags&quot;                                &quot;states_en&quot;                                 
+##  [61] &quot;main_category&quot;                              &quot;main_category_en&quot;                          
+##  [63] &quot;image_url&quot;                                  &quot;image_small_url&quot;                           
+##  [65] &quot;energy_100g&quot;                                &quot;energy_from_fat_100g&quot;                      
+##  [67] &quot;fat_100g&quot;                                   &quot;saturated_fat_100g&quot;                        
+##  [69] &quot;butyric_acid_100g&quot;                          &quot;caproic_acid_100g&quot;                         
+##  [71] &quot;caprylic_acid_100g&quot;                         &quot;capric_acid_100g&quot;                          
+##  [73] &quot;lauric_acid_100g&quot;                           &quot;myristic_acid_100g&quot;                        
+##  [75] &quot;palmitic_acid_100g&quot;                         &quot;stearic_acid_100g&quot;                         
+##  [77] &quot;arachidic_acid_100g&quot;                        &quot;behenic_acid_100g&quot;                         
+##  [79] &quot;lignoceric_acid_100g&quot;                       &quot;cerotic_acid_100g&quot;                         
+##  [81] &quot;montanic_acid_100g&quot;                         &quot;melissic_acid_100g&quot;                        
+##  [83] &quot;monounsaturated_fat_100g&quot;                   &quot;polyunsaturated_fat_100g&quot;                  
+##  [85] &quot;omega_3_fat_100g&quot;                           &quot;alpha_linolenic_acid_100g&quot;                 
+##  [87] &quot;eicosapentaenoic_acid_100g&quot;                 &quot;docosahexaenoic_acid_100g&quot;                 
+##  [89] &quot;omega_6_fat_100g&quot;                           &quot;linoleic_acid_100g&quot;                        
+##  [91] &quot;arachidonic_acid_100g&quot;                      &quot;gamma_linolenic_acid_100g&quot;                 
+##  [93] &quot;dihomo_gamma_linolenic_acid_100g&quot;           &quot;omega_9_fat_100g&quot;                          
+##  [95] &quot;oleic_acid_100g&quot;                            &quot;elaidic_acid_100g&quot;                         
+##  [97] &quot;gondoic_acid_100g&quot;                          &quot;mead_acid_100g&quot;                            
+##  [99] &quot;erucic_acid_100g&quot;                           &quot;nervonic_acid_100g&quot;                        
+## [101] &quot;trans_fat_100g&quot;                             &quot;cholesterol_100g&quot;                          
+## [103] &quot;carbohydrates_100g&quot;                         &quot;sugars_100g&quot;                               
+## [105] &quot;sucrose_100g&quot;                               &quot;glucose_100g&quot;                              
+## [107] &quot;fructose_100g&quot;                              &quot;lactose_100g&quot;                              
+## [109] &quot;maltose_100g&quot;                               &quot;maltodextrins_100g&quot;                        
+## [111] &quot;starch_100g&quot;                                &quot;polyols_100g&quot;                              
+## [113] &quot;fiber_100g&quot;                                 &quot;proteins_100g&quot;                             
+## [115] &quot;casein_100g&quot;                                &quot;serum_proteins_100g&quot;                       
+## [117] &quot;nucleotides_100g&quot;                           &quot;salt_100g&quot;                                 
+## [119] &quot;sodium_100g&quot;                                &quot;alcohol_100g&quot;                              
+## [121] &quot;vitamin_a_100g&quot;                             &quot;beta_carotene_100g&quot;                        
+## [123] &quot;vitamin_d_100g&quot;                             &quot;vitamin_e_100g&quot;                            
+## [125] &quot;vitamin_k_100g&quot;                             &quot;vitamin_c_100g&quot;                            
+## [127] &quot;vitamin_b1_100g&quot;                            &quot;vitamin_b2_100g&quot;                           
+## [129] &quot;vitamin_pp_100g&quot;                            &quot;vitamin_b6_100g&quot;                           
+## [131] &quot;vitamin_b9_100g&quot;                            &quot;vitamin_b12_100g&quot;                          
+## [133] &quot;biotin_100g&quot;                                &quot;pantothenic_acid_100g&quot;                     
+## [135] &quot;silica_100g&quot;                                &quot;bicarbonate_100g&quot;                          
+## [137] &quot;potassium_100g&quot;                             &quot;chloride_100g&quot;                             
+## [139] &quot;calcium_100g&quot;                               &quot;phosphorus_100g&quot;                           
+## [141] &quot;iron_100g&quot;                                  &quot;magnesium_100g&quot;                            
+## [143] &quot;zinc_100g&quot;                                  &quot;copper_100g&quot;                               
+## [145] &quot;manganese_100g&quot;                             &quot;fluoride_100g&quot;                             
+## [147] &quot;selenium_100g&quot;                              &quot;chromium_100g&quot;                             
+## [149] &quot;molybdenum_100g&quot;                            &quot;iodine_100g&quot;                               
+## [151] &quot;caffeine_100g&quot;                              &quot;taurine_100g&quot;                              
+## [153] &quot;ph_100g&quot;                                    &quot;fruits_vegetables_nuts_100g&quot;               
+## [155] &quot;collagen_meat_protein_ratio_100g&quot;           &quot;cocoa_100g&quot;                                
+## [157] &quot;chlorophyl_100g&quot;                            &quot;carbon_footprint_100g&quot;                     
+## [159] &quot;nutrition_score_fr_100g&quot;                    &quot;nutrition_score_uk_100g&quot;</code></pre>
+</div>
+<div id="removing-duplicate-info" class="section level3">
+<h3>Removing duplicate info</h3>
+<p>That’s a lot of variables. To summarize, there’s some information on what and when information was added (1:9), meta information about food (10:17, 22:27), where it came from (18:21, 28:34), what it’s made of (35:52), nutrition grades (53:54), some unclear (55:63), and some nutritional information (64:159).</p>
+<p>There are also many different pairs of columns that contain duplicate information.</p>
+<pre class="r"><code># Define vector of duplicate cols (don&#39;t change)
+duplicates &lt;- c(4, 6, 11, 13, 15, 17, 18, 20, 22, 
+                24, 25, 28, 32, 34, 36, 38, 40, 
+                44, 46, 48, 51, 54, 65, 158)
+
+# Remove duplicates from food: food2
+food2 &lt;- food[ ,-duplicates]</code></pre>
+</div>
+<div id="removing-useless-info" class="section level3">
+<h3>Removing useless info</h3>
+<p>Your dataset is much more manageable already.</p>
+<p>In addition to duplicate columns, there are many columns containing information that you just can’t use. For example, the first few columns contain internal codes that don’t have any meaning to us. There are also some column names that aren’t clear enough to tell what they contain.</p>
+<p>All of these columns can be deleted.</p>
+<pre class="r"><code># Define useless vector (don&#39;t change)
+useless &lt;- c(1, 2, 3, 32:41)
+
+# Remove useless columns from food2: food3
+food3 &lt;- food2[ ,-useless]</code></pre>
+</div>
+<div id="finding-columns" class="section level3">
+<h3>Finding columns</h3>
+<p>Looking much nicer! Recall from the first exercise that you are assuming you will be analyzing the sugar content of these foods. Therefore, your next step is to look at a summary of the nutrition information.</p>
+<p>All of the columns with nutrition info contain the character string “100g” as part of their name, which makes it easy to identify them.</p>
+<pre class="r"><code>#load stringr package
+library(stringr)
+# Create vector of column indices: nutrition
+nutrition &lt;- str_detect(names(food3), &quot;100g&quot;)
+
+# View a summary of nutrition columns
+summary(food3[nutrition])</code></pre>
+<pre><code>##  energy_from_fat_100g    fat_100g      saturated_fat_100g butyric_acid_100g caproic_acid_100g
+##  Min.   :   0.00      Min.   :  0.00   Min.   : 0.000     Mode:logical      Mode:logical     
+##  1st Qu.:  35.98      1st Qu.:  0.90   1st Qu.: 0.200     NA&#39;s:1500         NA&#39;s:1500        
+##  Median : 237.00      Median :  6.00   Median : 1.700                                        
+##  Mean   : 668.41      Mean   : 13.39   Mean   : 4.874                                        
+##  3rd Qu.: 974.00      3rd Qu.: 20.00   3rd Qu.: 6.500                                        
+##  Max.   :2900.00      Max.   :100.00   Max.   :57.000                                        
+##  NA&#39;s   :1486         NA&#39;s   :708      NA&#39;s   :797                                           
+##  caprylic_acid_100g capric_acid_100g lauric_acid_100g myristic_acid_100g palmitic_acid_100g
+##  Mode:logical       Mode:logical     Mode:logical     Mode:logical       Mode:logical      
+##  NA&#39;s:1500          NA&#39;s:1500        NA&#39;s:1500        NA&#39;s:1500          NA&#39;s:1500         
+##                                                                                            
+##                                                                                            
+##                                                                                            
+##                                                                                            
+##                                                                                            
+##  stearic_acid_100g arachidic_acid_100g behenic_acid_100g lignoceric_acid_100g cerotic_acid_100g
+##  Mode:logical      Mode:logical        Mode:logical      Mode:logical         Mode:logical     
+##  NA&#39;s:1500         NA&#39;s:1500           NA&#39;s:1500         NA&#39;s:1500            NA&#39;s:1500        
+##                                                                                                
+##                                                                                                
+##                                                                                                
+##                                                                                                
+##                                                                                                
+##  montanic_acid_100g melissic_acid_100g monounsaturated_fat_100g polyunsaturated_fat_100g
+##  Mode:logical       Mode:logical       Min.   : 0.00            Min.   : 0.400          
+##  NA&#39;s:1500          NA&#39;s:1500          1st Qu.: 3.87            1st Qu.: 1.653          
+##                                        Median : 9.50            Median : 3.900          
+##                                        Mean   :19.77            Mean   : 9.986          
+##                                        3rd Qu.:29.00            3rd Qu.:12.700          
+##                                        Max.   :75.00            Max.   :46.200          
+##                                        NA&#39;s   :1465             NA&#39;s   :1464            
+##  omega_3_fat_100g alpha_linolenic_acid_100g eicosapentaenoic_acid_100g docosahexaenoic_acid_100g
+##  Min.   : 0.033   Min.   :0.0800            Min.   :0.721              Min.   :1.09             
+##  1st Qu.: 1.300   1st Qu.:0.0905            1st Qu.:0.721              1st Qu.:1.09             
+##  Median : 3.000   Median :0.1010            Median :0.721              Median :1.09             
+##  Mean   : 3.726   Mean   :0.1737            Mean   :0.721              Mean   :1.09             
+##  3rd Qu.: 3.200   3rd Qu.:0.2205            3rd Qu.:0.721              3rd Qu.:1.09             
+##  Max.   :12.400   Max.   :0.3400            Max.   :0.721              Max.   :1.09             
+##  NA&#39;s   :1491     NA&#39;s   :1497              NA&#39;s   :1499               NA&#39;s   :1499             
+##  omega_6_fat_100g linoleic_acid_100g arachidonic_acid_100g gamma_linolenic_acid_100g
+##  Min.   :0.25     Min.   :0.5000     Mode:logical          Mode:logical             
+##  1st Qu.:0.25     1st Qu.:0.5165     NA&#39;s:1500             NA&#39;s:1500                
+##  Median :0.25     Median :0.5330                                                    
+##  Mean   :0.25     Mean   :0.5330                                                    
+##  3rd Qu.:0.25     3rd Qu.:0.5495                                                    
+##  Max.   :0.25     Max.   :0.5660                                                    
+##  NA&#39;s   :1499     NA&#39;s   :1498                                                      
+##  dihomo_gamma_linolenic_acid_100g omega_9_fat_100g oleic_acid_100g elaidic_acid_100g gondoic_acid_100g
+##  Mode:logical                     Mode:logical     Mode:logical    Mode:logical      Mode:logical     
+##  NA&#39;s:1500                        NA&#39;s:1500        NA&#39;s:1500       NA&#39;s:1500         NA&#39;s:1500        
+##                                                                                                       
+##                                                                                                       
+##                                                                                                       
+##                                                                                                       
+##                                                                                                       
+##  mead_acid_100g erucic_acid_100g nervonic_acid_100g trans_fat_100g   cholesterol_100g
+##  Mode:logical   Mode:logical     Mode:logical       Min.   :0.0000   Min.   :0.0000  
+##  NA&#39;s:1500      NA&#39;s:1500        NA&#39;s:1500          1st Qu.:0.0000   1st Qu.:0.0000  
+##                                                     Median :0.0000   Median :0.0000  
+##                                                     Mean   :0.0105   Mean   :0.0265  
+##                                                     3rd Qu.:0.0000   3rd Qu.:0.0026  
+##                                                     Max.   :0.1000   Max.   :0.4300  
+##                                                     NA&#39;s   :1481     NA&#39;s   :1477    
+##  carbohydrates_100g  sugars_100g     sucrose_100g   glucose_100g   fructose_100g   lactose_100g  
+##  Min.   :  0.000    Min.   :  0.00   Mode:logical   Mode:logical   Min.   :100    Min.   :0.000  
+##  1st Qu.:  3.792    1st Qu.:  1.00   NA&#39;s:1500      NA&#39;s:1500      1st Qu.:100    1st Qu.:0.250  
+##  Median : 13.500    Median :  4.05                                 Median :100    Median :0.500  
+##  Mean   : 27.958    Mean   : 12.66                                 Mean   :100    Mean   :2.933  
+##  3rd Qu.: 55.000    3rd Qu.: 14.70                                 3rd Qu.:100    3rd Qu.:4.400  
+##  Max.   :100.000    Max.   :100.00                                 Max.   :100    Max.   :8.300  
+##  NA&#39;s   :708        NA&#39;s   :788                                    NA&#39;s   :1499   NA&#39;s   :1497   
+##  maltose_100g   maltodextrins_100g  starch_100g     polyols_100g     fiber_100g     proteins_100g   
+##  Mode:logical   Mode:logical       Min.   : 0.00   Min.   : 8.60   Min.   : 0.000   Min.   : 0.000  
+##  NA&#39;s:1500      NA&#39;s:1500          1st Qu.: 9.45   1st Qu.:59.10   1st Qu.: 0.500   1st Qu.: 1.500  
+##                                    Median :39.50   Median :67.00   Median : 1.750   Median : 6.000  
+##                                    Mean   :30.73   Mean   :56.06   Mean   : 2.823   Mean   : 7.563  
+##                                    3rd Qu.:42.85   3rd Qu.:69.80   3rd Qu.: 3.500   3rd Qu.:10.675  
+##                                    Max.   :71.00   Max.   :70.00   Max.   :46.700   Max.   :61.000  
+##                                    NA&#39;s   :1493    NA&#39;s   :1491    NA&#39;s   :994      NA&#39;s   :710     
+##   casein_100g   serum_proteins_100g nucleotides_100g   salt_100g         sodium_100g     
+##  Min.   :1.1    Mode:logical        Mode:logical     Min.   :  0.0000   Min.   : 0.0000  
+##  1st Qu.:1.1    NA&#39;s:1500           NA&#39;s:1500        1st Qu.:  0.0438   1st Qu.: 0.0172  
+##  Median :1.1                                         Median :  0.4498   Median : 0.1771  
+##  Mean   :1.1                                         Mean   :  1.1205   Mean   : 0.4409  
+##  3rd Qu.:1.1                                         3rd Qu.:  1.1938   3rd Qu.: 0.4700  
+##  Max.   :1.1                                         Max.   :102.0000   Max.   :40.0000  
+##  NA&#39;s   :1499                                        NA&#39;s   :780        NA&#39;s   :780      
+##   alcohol_100g   vitamin_a_100g   beta_carotene_100g vitamin_d_100g  vitamin_e_100g   vitamin_k_100g
+##  Min.   : 0.00   Min.   :0.0000   Mode:logical       Min.   :0e+00   Min.   :0.0005   Min.   :0     
+##  1st Qu.: 0.00   1st Qu.:0.0000   NA&#39;s:1500          1st Qu.:0e+00   1st Qu.:0.0021   1st Qu.:0     
+##  Median : 5.50   Median :0.0001                      Median :0e+00   Median :0.0044   Median :0     
+##  Mean   :10.07   Mean   :0.0003                      Mean   :0e+00   Mean   :0.0069   Mean   :0     
+##  3rd Qu.:13.00   3rd Qu.:0.0006                      3rd Qu.:0e+00   3rd Qu.:0.0097   3rd Qu.:0     
+##  Max.   :50.00   Max.   :0.0013                      Max.   :1e-04   Max.   :0.0320   Max.   :0     
+##  NA&#39;s   :1433    NA&#39;s   :1477                        NA&#39;s   :1485    NA&#39;s   :1478     NA&#39;s   :1498  
+##  vitamin_c_100g  vitamin_b1_100g  vitamin_b2_100g  vitamin_pp_100g  vitamin_b6_100g  vitamin_b9_100g
+##  Min.   :0.000   Min.   :0.0001   Min.   :0.0002   Min.   :0.0006   Min.   :0.0001   Min.   :0e+00  
+##  1st Qu.:0.002   1st Qu.:0.0003   1st Qu.:0.0003   1st Qu.:0.0033   1st Qu.:0.0002   1st Qu.:0e+00  
+##  Median :0.019   Median :0.0004   Median :0.0009   Median :0.0069   Median :0.0008   Median :1e-04  
+##  Mean   :0.025   Mean   :0.0006   Mean   :0.0011   Mean   :0.0086   Mean   :0.0112   Mean   :1e-04  
+##  3rd Qu.:0.030   3rd Qu.:0.0010   3rd Qu.:0.0013   3rd Qu.:0.0140   3rd Qu.:0.0012   3rd Qu.:2e-04  
+##  Max.   :0.217   Max.   :0.0013   Max.   :0.0066   Max.   :0.0160   Max.   :0.2000   Max.   :2e-04  
+##  NA&#39;s   :1459    NA&#39;s   :1478     NA&#39;s   :1483     NA&#39;s   :1484     NA&#39;s   :1481     NA&#39;s   :1483   
+##  vitamin_b12_100g  biotin_100g   pantothenic_acid_100g  silica_100g    bicarbonate_100g
+##  Min.   :0        Min.   :0      Min.   :0.0000        Min.   :8e-04   Min.   :0.0006  
+##  1st Qu.:0        1st Qu.:0      1st Qu.:0.0007        1st Qu.:8e-04   1st Qu.:0.0678  
+##  Median :0        Median :0      Median :0.0020        Median :8e-04   Median :0.1350  
+##  Mean   :0        Mean   :0      Mean   :0.0027        Mean   :8e-04   Mean   :0.1692  
+##  3rd Qu.:0        3rd Qu.:0      3rd Qu.:0.0051        3rd Qu.:8e-04   3rd Qu.:0.2535  
+##  Max.   :0        Max.   :0      Max.   :0.0060        Max.   :8e-04   Max.   :0.3720  
+##  NA&#39;s   :1489     NA&#39;s   :1498   NA&#39;s   :1486          NA&#39;s   :1499    NA&#39;s   :1497    
+##  potassium_100g   chloride_100g     calcium_100g    phosphorus_100g    iron_100g      magnesium_100g  
+##  Min.   :0.0000   Min.   :0.0003   Min.   :0.0000   Min.   :0.0430   Min.   :0.0000   Min.   :0.0000  
+##  1st Qu.:0.0650   1st Qu.:0.0006   1st Qu.:0.0450   1st Qu.:0.1938   1st Qu.:0.0012   1st Qu.:0.0670  
+##  Median :0.1940   Median :0.0009   Median :0.1200   Median :0.3185   Median :0.0042   Median :0.1040  
+##  Mean   :0.3288   Mean   :0.0144   Mean   :0.2040   Mean   :0.3777   Mean   :0.0045   Mean   :0.1066  
+##  3rd Qu.:0.3670   3rd Qu.:0.0214   3rd Qu.:0.1985   3rd Qu.:0.4340   3rd Qu.:0.0077   3rd Qu.:0.1300  
+##  Max.   :1.4300   Max.   :0.0420   Max.   :1.0000   Max.   :1.1550   Max.   :0.0137   Max.   :0.3330  
+##  NA&#39;s   :1487     NA&#39;s   :1497     NA&#39;s   :1449     NA&#39;s   :1488     NA&#39;s   :1463     NA&#39;s   :1479    
+##    zinc_100g       copper_100g    manganese_100g fluoride_100g  selenium_100g  chromium_100g 
+##  Min.   :0.0005   Min.   :0e+00   Min.   :0      Min.   :0      Min.   :0      Mode:logical  
+##  1st Qu.:0.0009   1st Qu.:1e-04   1st Qu.:0      1st Qu.:0      1st Qu.:0      NA&#39;s:1500     
+##  Median :0.0017   Median :1e-04   Median :0      Median :0      Median :0                    
+##  Mean   :0.0016   Mean   :1e-04   Mean   :0      Mean   :0      Mean   :0                    
+##  3rd Qu.:0.0022   3rd Qu.:1e-04   3rd Qu.:0      3rd Qu.:0      3rd Qu.:0                    
+##  Max.   :0.0026   Max.   :1e-04   Max.   :0      Max.   :0      Max.   :0                    
+##  NA&#39;s   :1493     NA&#39;s   :1498    NA&#39;s   :1499   NA&#39;s   :1498   NA&#39;s   :1499                 
+##  molybdenum_100g  iodine_100g   caffeine_100g  taurine_100g   ph_100g       
+##  Mode:logical    Min.   :0      Mode:logical   Mode:logical   Mode:logical  
+##  NA&#39;s:1500       1st Qu.:0      NA&#39;s:1500      NA&#39;s:1500      NA&#39;s:1500     
+##                  Median :0                                                  
+##                  Mean   :0                                                  
+##                  3rd Qu.:0                                                  
+##                  Max.   :0                                                  
+##                  NA&#39;s   :1499                                               
+##  fruits_vegetables_nuts_100g collagen_meat_protein_ratio_100g   cocoa_100g   chlorophyl_100g
+##  Min.   : 2.00               Min.   :12.00                    Min.   :30     Mode:logical   
+##  1st Qu.:11.25               1st Qu.:13.50                    1st Qu.:47     NA&#39;s:1500      
+##  Median :42.00               Median :15.00                    Median :60                    
+##  Mean   :36.88               Mean   :15.67                    Mean   :57                    
+##  3rd Qu.:52.25               3rd Qu.:17.50                    3rd Qu.:70                    
+##  Max.   :80.00               Max.   :20.00                    Max.   :81                    
+##  NA&#39;s   :1470                NA&#39;s   :1497                     NA&#39;s   :1491                  
+##  nutrition_score_fr_100g nutrition_score_uk_100g
+##  Min.   :-12.000         Min.   :-12.000        
+##  1st Qu.:  1.000         1st Qu.:  0.000        
+##  Median :  7.000         Median :  6.000        
+##  Mean   :  7.941         Mean   :  7.631        
+##  3rd Qu.: 15.000         3rd Qu.: 16.000        
+##  Max.   : 28.000         Max.   : 28.000        
+##  NA&#39;s   :825             NA&#39;s   :825</code></pre>
+</div>
+<div id="replacing-missing-values" class="section level3">
+<h3>Replacing missing values</h3>
+<p>Unfortunately, the summary revealed that the nutrition data are mostly NA values. After consulting with the lab technician, it appears that much of the data is missing because the food just doesn’t have those nutrients.</p>
+<p>But all is not lost! The lab tech also said that for sugar content, zero values are sometimes entered explicitly, but sometimes the values are just left empty to denote a zero.</p>
+<p>We can replace all NA values with zeroes in the sugars_100g column and make histograms to visualize the result. Then, we will exclude the observations which have no sugar to see how the distribution changes.</p>
+<pre class="r"><code># Find indices of sugar NA values: missing
+missing &lt;- is.na(food3$sugars_100g)
+
+# Replace NA values with 0
+food3$sugars_100g[missing] &lt;- 0
+
+# Create first histogram
+hist(food3$sugars_100g, breaks = 100)</code></pre>
+<p><img src="food_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code># Create food4
+food4 &lt;- food3[food3$sugars_100g &gt; 0, ]
+
+# Create second histogram
+hist(food4$sugars_100g, breaks = 100)</code></pre>
+<p><img src="food_files/figure-html/unnamed-chunk-7-2.png" width="672" /> Excluding the observations which don’t contain any sugar, you can better visualize what the underlying distribution looks like.</p>
+</div>
+<div id="dealing-with-messy-data" class="section level3">
+<h3>Dealing with messy data</h3>
+<p>How many of these foods come in some sort of plastic packaging?</p>
+<p>The dataset has information about packaging, but there’s a bit of a problem: it’s stored in several different languages (Spanish, French, and English). This takes messy data to a whole new level! There is no R package to selectively translate, but what if you could just work with the messy data directly?</p>
+<p>The root word for plastic is same in English (plastic), French (plastique), and Spanish (plastico). To get a general idea of how many of these foods are packaged in plastic, we can look through the packaging column for the string “plasti”.</p>
+<pre class="r"><code># Find entries containing &quot;plasti&quot;: plastic
+plastic &lt;- str_detect(food3$packaging, &quot;plasti&quot;)
+
+# Print the sum of plastic
+print(sum(plastic))</code></pre>
+<pre><code>## [1] 232</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
