@@ -278,7 +278,7 @@ $(document).ready(function () {
   <a href="mbta.html">MBTA</a>
 </li>
 <li>
-  <a href="food.html">World Food</a>
+  <a href="food.nb.html">World Food</a>
 </li>
 <li>
   <a href="school.html">School</a>
@@ -303,7 +303,147 @@ $(document).ready(function () {
 </div>
 
 
-
+<p>We’ll work with attendance data from public schools in the US, organized by school level and state, during the 2007-2008 academic year. The data contain information on average daily attendance (ADA) as a percentage of total enrollment, school day length, and school year length.</p>
+<pre class="r"><code># Load the gdata package
+library(gdata)</code></pre>
+<pre><code>## gdata: Unable to locate valid perl interpreter
+## gdata: 
+## gdata: read.xls() will be unable to read Excel XLS and XLSX files unless the &#39;perl=&#39;
+## gdata: argument is used to specify the location of a valid perl intrpreter.
+## gdata: 
+## gdata: (To avoid display of this message in the future, please ensure perl is installed and
+## gdata: available on the executable search path.)</code></pre>
+<pre><code>## gdata: Unable to load perl libaries needed by read.xls()
+## gdata: to support &#39;XLX&#39; (Excel 97-2004) files.</code></pre>
+<pre><code>## </code></pre>
+<pre><code>## gdata: Unable to load perl libaries needed by read.xls()
+## gdata: to support &#39;XLSX&#39; (Excel 2007+) files.</code></pre>
+<pre><code>## </code></pre>
+<pre><code>## gdata: Run the function &#39;installXLSXsupport()&#39;
+## gdata: to automatically download and install the perl
+## gdata: libaries needed to support Excel XLS and XLSX formats.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;gdata&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     combine, first, last</code></pre>
+<pre><code>## The following objects are masked from &#39;package:data.table&#39;:
+## 
+##     first, last</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     nobs</code></pre>
+<pre><code>## The following object is masked from &#39;package:utils&#39;:
+## 
+##     object.size</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     startsWith</code></pre>
+<pre class="r"><code># Import the spreadsheet: att
+att &lt;- read.xls(&quot;attendance.xls&quot;, perl=&quot;c:/Program Files/Git/usr/bin/perl.exe&quot;)</code></pre>
+<p>Let’s have a look to the first rows</p>
+<pre class="r"><code>head(att)</code></pre>
+<pre><code>##   Table.43..Average.daily.attendance..ADA..as.a.percentage.of.total.enrollment..school.day.length..and.school.year.length.in.public.schools..by.school.level.and.state..2007.08
+## 1                                                                                                                                                                              
+## 2                                                                                                                                                                              
+## 3                                                                                                                                                                             1
+## 4                                                                                                                                                        United States ........
+## 5                                                                                                                                                     Alabama .................
+## 6                                                                                                                                                     Alaska ..................
+##                                                                        X    X.1
+## 1 Total elementary, secondary, and combined elementary/secondary schools       
+## 2                                           ADA as percent of enrollment       
+## 3                                                                      2       
+## 4                                                                   93.1 (0.22)
+## 5                                                                   93.8 (1.24)
+## 6                                                                   89.9 (1.22)
+##                           X.2    X.3                         X.4   X.5                          X.6
+## 1                                                                                                  
+## 2 Average hours in school day        Average days in school year       Average hours in school year
+## 3                           3                                  4                                  5
+## 4                         6.6 (0.02)                         180 (0.1)                        1,193
+## 5                         7.0 (0.07)                         180 (0.8)                        1,267
+## 6                         6.5 (0.05)                         180 (3.4)                        1,163
+##      X.7                          X.8    X.9                        X.10   X.11
+## 1                  Elementary schools                                          
+## 2        ADA as percent of enrollment        Average hours in school day       
+## 3                                   6                                  7       
+## 4  (3.1)                         94.0 (0.27)                         6.7 (0.02)
+## 5 (12.3)                         93.8 (1.84)                         7.0 (0.08)
+## 6 (22.9)                         91.3 (1.56)                         6.5 (0.05)
+##                           X.12   X.13                        X.14   X.15
+## 1            Secondary schools                                          
+## 2 ADA as percent of enrollment        Average hours in school day       
+## 3                            8                                  9       
+## 4                         91.1 (0.43)                         6.6 (0.04)
+## 5                         94.6 (0.38)                         7.1 (0.17)
+## 6                         93.2 (1.57)                         6.2 (0.15)</code></pre>
+<p>At first glance, it looks like the first row is a description of the data, the second row is a variable itself that groups multiple columns together, and the fourth row gives numbers for the columns, which might look nice in a spreadsheet but isn’t very useful for you, the analyst.</p>
+<pre class="r"><code># Print the column names 
+names(att)</code></pre>
+<pre><code>##  [1] &quot;Table.43..Average.daily.attendance..ADA..as.a.percentage.of.total.enrollment..school.day.length..and.school.year.length.in.public.schools..by.school.level.and.state..2007.08&quot;
+##  [2] &quot;X&quot;                                                                                                                                                                            
+##  [3] &quot;X.1&quot;                                                                                                                                                                          
+##  [4] &quot;X.2&quot;                                                                                                                                                                          
+##  [5] &quot;X.3&quot;                                                                                                                                                                          
+##  [6] &quot;X.4&quot;                                                                                                                                                                          
+##  [7] &quot;X.5&quot;                                                                                                                                                                          
+##  [8] &quot;X.6&quot;                                                                                                                                                                          
+##  [9] &quot;X.7&quot;                                                                                                                                                                          
+## [10] &quot;X.8&quot;                                                                                                                                                                          
+## [11] &quot;X.9&quot;                                                                                                                                                                          
+## [12] &quot;X.10&quot;                                                                                                                                                                         
+## [13] &quot;X.11&quot;                                                                                                                                                                         
+## [14] &quot;X.12&quot;                                                                                                                                                                         
+## [15] &quot;X.13&quot;                                                                                                                                                                         
+## [16] &quot;X.14&quot;                                                                                                                                                                         
+## [17] &quot;X.15&quot;</code></pre>
+<pre class="r"><code># Print the last 6 rows
+tail(att)</code></pre>
+<pre><code>##                                                                            Table.43..Average.daily.attendance..ADA..as.a.percentage.of.total.enrollment..school.day.length..and.school.year.length.in.public.schools..by.school.level.and.state..2007.08
+## 54                                                                                                                                                                                                                             Wisconsin ...............
+## 55                                                                                                                                                                                                                             Wyoming .................
+## 56                                                                                                                                                                                                                                    â\200 Not applicable.
+## 57                                                                                                                                                                                                     â\200¡Reporting standards not met (too few cases).  
+## 58 NOTE: Averages reflect data reported by schools rather than state requirements. School-reported length of day may exceed state requirements, and there is a range of statistical error in reported estimates. Standard errors appear in parentheses. 
+## 59                                                                                                     SOURCE: U.S. Department of Education, National Center for Education Statistics, Schools and Staffing Survey (SASS), \\Public School Questionnaire
+##                                                               X    X.1 X.2    X.3 X.4   X.5   X.6
+## 54                                                         95.0 (0.57) 6.9 (0.04) 180 (0.7) 1,246
+## 55                                                         92.4 (1.15) 6.9 (0.05) 175 (1.3) 1,201
+## 56                                                                                               
+## 57                                                                                               
+## 58                                                                                               
+## 59 \\ 2003-04 and 2007-08. (This table was prepared June 2011.)                                  
+##      X.7  X.8    X.9 X.10   X.11 X.12   X.13 X.14   X.15
+## 54 (8.6) 95.4 (0.41)  6.9 (0.05) 93.0 (1.91)  7.0 (0.14)
+## 55 (8.3) 92.2 (1.65)  6.9 (0.05) 92.4 (0.75)  7.0 (0.07)
+## 56                                                      
+## 57                                                      
+## 58                                                      
+## 59</code></pre>
+<pre class="r"><code># Print the structure
+str(att)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    59 obs. of  17 variables:
+##  $ Table.43..Average.daily.attendance..ADA..as.a.percentage.of.total.enrollment..school.day.length..and.school.year.length.in.public.schools..by.school.level.and.state..2007.08: Factor w/ 58 levels &quot;&quot;,&quot;   United States ........&quot;,..: 1 1 3 2 6 7 8 9 10 11 ...
+##  $ X                                                                                                                                                                            : Factor w/ 42 levels &quot;&quot;,&quot;\\ 2003-04 and 2007-08. (This table was prepared June 2011.)&quot;,..: 42 41 3 22 28 8 6 14 23 29 ...
+##  $ X.1                                                                                                                                                                          : Factor w/ 45 levels &quot;&quot;,&quot;(0.22)&quot;,&quot;(0.23)&quot;,..: 1 1 1 2 22 21 41 27 14 6 ...
+##  $ X.2                                                                                                                                                                          : Factor w/ 14 levels &quot;&quot;,&quot;3&quot;,&quot;6.2&quot;,&quot;6.3&quot;,..: 1 14 2 7 11 6 5 10 3 11 ...
+##  $ X.3                                                                                                                                                                          : Factor w/ 14 levels &quot;&quot;,&quot;(0.02)&quot;,&quot;(0.03)&quot;,..: 1 1 1 2 7 5 9 6 7 5 ...
+##  $ X.4                                                                                                                                                                          : Factor w/ 15 levels &quot;&quot;,&quot;171&quot;,&quot;172&quot;,..: 1 15 14 10 10 10 11 9 11 2 ...
+##  $ X.5                                                                                                                                                                          : Factor w/ 22 levels &quot;&quot;,&quot;(0.0)&quot;,&quot;(0.1)&quot;,..: 1 1 1 3 10 21 19 4 6 12 ...
+##  $ X.6                                                                                                                                                                          : Factor w/ 48 levels &quot;&quot;,&quot;1,102&quot;,&quot;1,117&quot;,..: 1 48 47 26 45 15 13 36 5 28 ...
+##  $ X.7                                                                                                                                                                          : Factor w/ 48 levels &quot;&quot;,&quot;(10.1)&quot;,&quot;(10.3)&quot;,..: 1 1 1 36 11 35 22 6 13 48 ...
+##  $ X.8                                                                                                                                                                          : Factor w/ 40 levels &quot;&quot;,&quot;6&quot;,&quot;81.0&quot;,..: 40 39 2 22 20 9 5 13 27 25 ...
+##  $ X.9                                                                                                                                                                          : Factor w/ 51 levels &quot;&quot;,&quot;(0.24)&quot;,&quot;(0.25)&quot;,..: 1 1 1 4 32 25 48 35 20 13 ...
+##  $ X.10                                                                                                                                                                         : Factor w/ 14 levels &quot;&quot;,&quot;6.2&quot;,&quot;6.3&quot;,..: 1 14 10 7 11 5 4 9 3 11 ...
+##  $ X.11                                                                                                                                                                         : Factor w/ 13 levels &quot;&quot;,&quot;(0.02)&quot;,&quot;(0.03)&quot;,..: 1 1 1 2 8 5 10 8 5 7 ...
+##  $ X.12                                                                                                                                                                         : Factor w/ 41 levels &quot;&quot;,&quot;8&quot;,&quot;85.8&quot;,..: 41 40 2 18 34 29 7 17 8 19 ...
+##  $ X.13                                                                                                                                                                         : Factor w/ 47 levels &quot;&quot;,&quot;(0.35)&quot;,&quot;(0.37)&quot;,..: 1 1 1 6 4 24 42 34 22 19 ...
+##  $ X.14                                                                                                                                                                         : Factor w/ 17 levels &quot;&quot;,&quot;5.9&quot;,&quot;6.1&quot;,..: 1 17 15 8 13 4 6 10 3 12 ...
+##  $ X.15                                                                                                                                                                         : Factor w/ 29 levels &quot;&quot;,&quot;(0.03)&quot;,&quot;(0.04)&quot;,..: 1 1 1 3 14 12 20 7 17 8 ...</code></pre>
+<div id="removing-unnecessary-rows" class="section level3">
+<h3>Removing unnecessary rows</h3>
+</div>
 
 
 
