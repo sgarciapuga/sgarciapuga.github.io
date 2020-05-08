@@ -19,26 +19,26 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>Data Science with Sergio: Importing Data</title>
+  <title>Data Science with Sergio: Cleaning Data</title>
   
   
   
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Data Science with Sergio: Importing Data"/>
+  <meta property="og:title" content="Data Science with Sergio: Cleaning Data"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Data Science with Sergio"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Data Science with Sergio: Importing Data"/>
+  <meta property="twitter:title" content="Data Science with Sergio: Cleaning Data"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Importing Data"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Cleaning Data"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1269,7 +1269,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Importing Data","authors":[]}
+{"title":"Cleaning Data","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1326,69 +1326,70 @@ Projects
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Importing Data</h1>
+<h1>Cleaning Data</h1>
 
 </div>
 
 
 <div class="d-article">
-<h2 id="introduction-to-importing-data-in-r"><a href="https://rpubs.com/Sergio_Garcia/593734" target="_blank">Introduction to Importing Data in R</a></h2>
-<h3 id="base-r">Base R</h3>
+<h1 id="cleaning-data-in-r"><a href="https://rpubs.com/Sergio_Garcia/599344" target="_blank">Cleaning Data in R</a></h1>
+<h3 id="exploring-the-data">Exploring the data</h3>
 <ul>
-<li>read.csv()
-<ul>
-<li>stringAsFactors</li>
-</ul></li>
-<li>read.delim()</li>
-<li>read.table()</li>
+<li>class() – check the class of an object</li>
+<li>dim() – check dimension of data frame</li>
+<li>names() – check column names</li>
+<li>str() – check the structure of a data frame</li>
+<li>head() – first 6 rows</li>
+<li>tail() – last 6 rows</li>
 </ul>
-<h3 id="readr">readr</h3>
+<p><strong>dplyr</strong></p>
 <ul>
-<li><p>read_csv()</p></li>
-<li><p>read_tsv()</p></li>
-<li><p>read_delim()</p></li>
+<li>glimse() – same as str() but clearer</li>
 </ul>
-<h3 id="data.table">data.table</h3>
+<p><strong>Data visualization</strong></p>
+<p>hist() – histogram plot() – scatter plot</p>
+<p><strong>tidyr</strong></p>
 <ul>
-<li>fread()</li>
+<li>gather() – takes key-values pairs and spreads them across multiple columns</li>
+<li>separate() – to separate 1 column in multiple columns by a separator</li>
+<li>unite() – opposite to separate</li>
 </ul>
-<h3 id="readxltidyerse">readxl(tidyerse)</h3>
+<p><strong>Type of variables</strong></p>
 <ul>
-<li>excel_sheets</li>
+<li>character</li>
+<li>numeric</li>
+<li>factor</li>
+<li>logical</li>
 </ul>
-<h3 id="gdata">gdata</h3>
+<h3 id="type-conversion">Type conversion</h3>
+<p><strong>Lubridate:</strong> lubridate package: functions combine the letters y, m, d, h, m, s</p>
 <ul>
-<li>read.xls</li>
+<li>ymd()</li>
+<li>mdy()</li>
+<li>hms()</li>
+<li>ymd_hms()</li>
 </ul>
-<h3 id="xlconnect">XLConnect</h3>
+<p><strong>String manipulation:</strong> stringr library</p>
 <ul>
-<li><p>loadWorkbook() - import all excel workbook (connects to a workbook)</p></li>
-<li><p>getSheets() - list the sheets in an excel workbook</p></li>
-<li><p>readWorkbook() - import a particular sheet</p></li>
-<li><p>createSheet() - create a new sheet</p></li>
-<li><p>writeWorksheet()</p></li>
-<li><p>saveWorksheet()</p></li>
-<li><p>renameWorksheet()</p></li>
+<li>str_trim() - remove leading and/or trailing white space</li>
+<li>str_pad() - pad strings to make them a certain number of characters wide</li>
+<li>str_detect() – finding patterns</li>
+<li>str_replace() – replacing patterns</li>
 </ul>
-<h2 id="intermediate-to-importing-data-in-r"><a href="https://rpubs.com/Sergio_Garcia/595074" target="_blank">Intermediate to Importing Data in R</a></h2>
-<h3 id="dbi---importing-sql-database">DBI - Importing SQL database</h3>
+<p><strong>base R:</strong></p>
 <ul>
-<li>dbConnect() - connect to the database
-<ul>
-<li>dbListTables() - list tables</li>
-<li>dbReadTable() - import data</li>
-<li>dbGetQuery() - SQL queries</li>
-</ul></li>
-<li>dbDisconnect - disconnect to the database</li>
+<li>toupper() – making strings uppercase</li>
+<li>tolower() – making strings lowercase</li>
 </ul>
-<h3 id="importing-urls">importing URLs</h3>
-<p>How to import data from an URL - csv - txt - Excel files - download.file() - download any kind of file - load() - loading RData files</p>
-<h3 id="importing-json">importing JSON</h3>
-<p>httr library - GET() - content()</p>
-<p>jsonlite library - fromJSON() - convert character strings that represent JSON data into a nicely structured R list - toJSON() - to convert R data to a JSON format - pretty / minify()</p>
-<h3 id="importing-sas-stata-and-spss">Importing SAS, STATA and SPSS</h3>
-<p>haven library - read_sas() - read_dta() - STATA files - read_sav - SPSS files</p>
-<p>foreign library - read.dta() - read.spss()</p>
+<h3 id="missing-values">Missing Values</h3>
+<ul>
+<li>is.na() – spot all NAs</li>
+<li>any(is.na()) – to check if there is any NA</li>
+<li>summary() – can also be used to check NAs</li>
+<li>complete.cases() – to see which rows have no NAs</li>
+<li>na.omit() – remove rows with missing values</li>
+</ul>
+<h3 id="outliers">Outliers</h3>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

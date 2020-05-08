@@ -19,29 +19,26 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>My Website: R Projects</title>
+  <title>Data Science with Sergio: R Projects</title>
   
-  <meta property="description" itemprop="description" content="List of projects"/>
   
   
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="My Website: R Projects"/>
+  <meta property="og:title" content="Data Science with Sergio: R Projects"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="List of projects"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="My Website"/>
+  <meta property="og:site_name" content="Data Science with Sergio"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="My Website: R Projects"/>
-  <meta property="twitter:description" content="List of projects"/>
+  <meta property="twitter:title" content="Data Science with Sergio: R Projects"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["R Projects"]},{"type":"character","attributes":{},"value":["List of projects"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["R Projects"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1272,7 +1269,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"R Projects","description":"List of projects","authors":[]}
+{"title":"R Projects","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1280,19 +1277,19 @@
 <header class="header header--fixed" role="banner">
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
-<a href="index.html" class="title">My Website</a>
-</div>
-<div class="nav-right">
+<a href="index.html" class="title">Data Science with Sergio</a>
 <a href="index.html">Home</a>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
-R Help
+R help
  
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
 <a href="importing_data.html">Importing Data</a>
+<a href="cleaning_data.html">Cleaning Data</a>
 <a href="tidyverse.html">Tidyverse</a>
+<a href="functions.html">Functions</a>
 </div>
 </div>
 <a href="git_help.html">Git Help</a>
@@ -1303,11 +1300,23 @@ Projects
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="r_projects.html">R</a>
-<span class="nav-dropdown-header">Python</span>
+<a href="r_projects.html">
+<i class="fab fa-r-project"></i>
+</a>
+<a href="python_projects.html">
+<i class="fab fa-python"></i>
+</a>
 </div>
 </div>
+</div>
+<div class="nav-right">
 <a href="about.html">About</a>
+<a href="https://www.linkedin.com/in/sergiogarciapuga/">
+<i class="fab fa-linkedin"></i>
+</a>
+<a href="https://github.com/sgarciapuga">
+<i class="fab fa-github"></i>
+</a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -1318,15 +1327,66 @@ Projects
 
 <div class="d-title">
 <h1>R Projects</h1>
-<p><p>List of projects</p></p>
+
 </div>
 
 
 <div class="d-article">
-<p><a href="https://rpubs.com/Sergio_Garcia/596118" target="_blank">Visualizing COVID-19</a></p>
-<p><a href="https://rpubs.com/Sergio_Garcia/572327" target="_blank">Visualizing Carbon Dioxide Levels</a></p>
-<p><a href="https://rpubs.com/Sergio_Garcia/574755" target="_blank">Central Tendency for Housing Data</a></p>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<div>
+<p><strong><em><a href="https://rpubs.com/Sergio_Garcia/596118" target="_blank">Visualizing COVID-19</a></em></strong></p>
+<p>In December 2019, COVID-19 coronavirus was first identified in the Wuhan region of China. By March 11, 2020, the World Health Organization (WHO) categorized the COVID-19 outbreak as a pandemic. In this project, we visualise Covid data using ggplot2.</p>
+</div>
+<div>
+<p>
+<img style="float: right; margin:5px 20px 5px 1px; width:80%" src="images/covid.jpg">
+</p>
+</div>
+</div>
+<hr />
+<div style="display: flex; justify-content: space-between; align-items: center; align-content: flex-start;">
+<div>
+<p><strong><em><a href="https://rpubs.com/Sergio_Garcia/grain_yields_project" target="_blank">Project: Grain yields</a></em></strong></p>
+<p>We’ll be working with grain yield data from the United States Department of Agriculture, National Agricultural Statistics Service. We will use functions to convert areas to metric and then visualise.</p>
+</div>
+<div>
+<p>
+<img style="float: right; margin:5px 20px 5px 1px; width:80%" src="images/grain_yields.png">
+</p>
+</div>
+</div>
+<hr />
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<div>
+<p><strong><em><a href="https://rpubs.com/Sergio_Garcia/572327" target="_blank">Visualizing Carbon Dioxide Levels</a></em></strong></p>
+<p>Climate scientists have measured the concentration of carbon dioxide (CO2) in the Earth’s atmosphere dating back thousands of years. In this project, we will investigate two datasets containing information about the carbon dioxide levels in the atmosphere.</p>
+</div>
+<div>
+<p>
+<img style="float: right; margin:5px 20px 5px 1px; width:80%" src="images/carbon.png">
+</p>
+</div>
+</div>
+<hr />
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<div>
+<p><strong><em><a href="https://rpubs.com/Sergio_Garcia/574755" target="_blank">Central Tendency for Housing Data</a></em></strong></p>
+<p>In this project, we will find the mean, median, and mode cost of one-bedroom apartments in three of the five New York City boroughs: Brooklyn, Manhattan, and Queens.</p>
+</div>
+<div>
+<p>
+<img style="float: right; margin:5px 20px 5px 1px; width:80%" src="images/house.png">
+</p>
+</div>
+</div>
+<hr />
+<h2 id="cleaning-data">Cleaning data</h2>
+<p><a href="https://rpubs.com/Sergio_Garcia/mbta_data_cleaning" target="_blank">Massachusetts Bay Transportation Authority</a></p>
+<p><a href="https://rpubs.com/Sergio_Garcia/food_data_cleaning" target="_blank">Data cleaning: World food</a></p>
+<p><a href="https://rpubs.com/Sergio_Garcia/ticket_sales_R" target="_blank">Cleaning Data in R: ticket sales</a></p>
+<p><a href="https://rpubs.com/Sergio_Garcia/599364" target="_blank">Cleaning data: weather example</a></p>
 <p><a href="https://rpubs.com/Sergio_Garcia/571987" target="_blank">Cleaning US Census Data</a></p>
+<h3 id="other-exercises">Other exercises</h3>
 <p><a href="https://rpubs.com/Sergio_Garcia/580243" target="_blank">Exercise with Vectors</a></p>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
