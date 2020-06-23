@@ -1286,10 +1286,18 @@ R help
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
+<span class="nav-dropdown-header">Manipulation</span>
 <a href="importing_data.html">Importing Data</a>
 <a href="cleaning_data.html">Cleaning Data</a>
 <a href="tidyverse.html">Tidyverse</a>
+<a href="data_manipulation.html">Data Manipulation</a>
+<a href="joins.html">Joins</a>
+<span class="nav-dropdown-header">Visualisation</span>
+<a href="data_visualisation.html">Data Visualisation</a>
+<span class="nav-dropdown-header">Functions</span>
 <a href="functions.html">Functions</a>
+<hr/>
+<a href="r_cheatsheets.html">Cheatsheets</a>
 </div>
 </div>
 <a href="git_help.html">Git Help</a>
@@ -1333,6 +1341,8 @@ Projects
 
 <div class="d-article">
 <h2 id="introduction-to-importing-data-in-r"><a href="https://rpubs.com/Sergio_Garcia/593734" target="_blank">Introduction to Importing Data in R</a></h2>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;">
+<div>
 <h3 id="base-r">Base R</h3>
 <ul>
 <li>read.csv()
@@ -1342,53 +1352,111 @@ Projects
 <li>read.delim()</li>
 <li>read.table()</li>
 </ul>
+</div>
+<div>
 <h3 id="readr">readr</h3>
 <ul>
 <li><p>read_csv()</p></li>
 <li><p>read_tsv()</p></li>
 <li><p>read_delim()</p></li>
 </ul>
+</div>
+<div>
 <h3 id="data.table">data.table</h3>
 <ul>
 <li>fread()</li>
 </ul>
+</div>
+<div>
 <h3 id="readxltidyerse">readxl(tidyerse)</h3>
 <ul>
 <li>excel_sheets</li>
 </ul>
+</div>
+<div>
 <h3 id="gdata">gdata</h3>
 <ul>
-<li>read.xls</li>
+<li>read.xls()</li>
 </ul>
+</div>
+<div>
 <h3 id="xlconnect">XLConnect</h3>
 <ul>
-<li><p>loadWorkbook() - import all excel workbook (connects to a workbook)</p></li>
-<li><p>getSheets() - list the sheets in an excel workbook</p></li>
-<li><p>readWorkbook() - import a particular sheet</p></li>
-<li><p>createSheet() - create a new sheet</p></li>
+<li><p>loadWorkbook(): import all excel workbook (connects to a workbook)</p></li>
+<li><p>getSheets(): list the sheets in an excel workbook</p></li>
+<li><p>readWorkbook(): import a particular sheet</p></li>
+<li><p>createSheet(): create a new sheet</p></li>
 <li><p>writeWorksheet()</p></li>
 <li><p>saveWorksheet()</p></li>
 <li><p>renameWorksheet()</p></li>
 </ul>
+</div>
+</div>
+<hr />
 <h2 id="intermediate-to-importing-data-in-r"><a href="https://rpubs.com/Sergio_Garcia/595074" target="_blank">Intermediate to Importing Data in R</a></h2>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; align-content: flex-start;">
+<div>
 <h3 id="dbi---importing-sql-database">DBI - Importing SQL database</h3>
 <ul>
-<li>dbConnect() - connect to the database
+<li>dbConnect(): connect to the database
 <ul>
-<li>dbListTables() - list tables</li>
-<li>dbReadTable() - import data</li>
-<li>dbGetQuery() - SQL queries</li>
+<li>dbListTables(): list tables</li>
+<li>dbReadTable(): import data</li>
+<li>dbGetQuery(): SQL queries</li>
 </ul></li>
-<li>dbDisconnect - disconnect to the database</li>
+<li>dbDisconnect: disconnect to the database</li>
 </ul>
-<h3 id="importing-urls">importing URLs</h3>
-<p>How to import data from an URL - csv - txt - Excel files - download.file() - download any kind of file - load() - loading RData files</p>
-<h3 id="importing-json">importing JSON</h3>
-<p>httr library - GET() - content()</p>
-<p>jsonlite library - fromJSON() - convert character strings that represent JSON data into a nicely structured R list - toJSON() - to convert R data to a JSON format - pretty / minify()</p>
+</div>
+<div>
+<h3 id="importing-urls">Importing URLs</h3>
+<p>How to import data from an URL</p>
+<ul>
+<li>csv</li>
+<li>txt</li>
+<li>Excel files</li>
+<li>download.file(): download any kind of file</li>
+<li>load(): loading RData files</li>
+</ul>
+</div>
+</div>
+<h3 id="importing-json">Importing JSON</h3>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; align-content: flex-start;">
+<div>
+<p><strong><em>httr</em></strong> library</p>
+<ul>
+<li>GET()</li>
+<li>content()</li>
+</ul>
+</div>
+<div>
+<p><strong><em>jsonlite</em></strong> library</p>
+<ul>
+<li>fromJSON(): convert character strings that represent JSON data into a nicely structured R list</li>
+<li>toJSON(): to convert R data to a JSON format
+<ul>
+<li>pretty / minify()</li>
+</ul></li>
+</ul>
+</div>
+</div>
 <h3 id="importing-sas-stata-and-spss">Importing SAS, STATA and SPSS</h3>
-<p>haven library - read_sas() - read_dta() - STATA files - read_sav - SPSS files</p>
-<p>foreign library - read.dta() - read.spss()</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; align-content: flex-start;">
+<div>
+<p><strong><em>haven</em></strong> library</p>
+<ul>
+<li>read_sas()</li>
+<li>read_dta(): STATA files</li>
+<li>read_sav: SPSS files</li>
+</ul>
+</div>
+<div>
+<p><strong><em>foreign</em></strong> library</p>
+<ul>
+<li>read.dta()</li>
+<li>read.spss()</li>
+</ul>
+</div>
+</div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

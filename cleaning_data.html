@@ -1286,10 +1286,18 @@ R help
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
+<span class="nav-dropdown-header">Manipulation</span>
 <a href="importing_data.html">Importing Data</a>
 <a href="cleaning_data.html">Cleaning Data</a>
 <a href="tidyverse.html">Tidyverse</a>
+<a href="data_manipulation.html">Data Manipulation</a>
+<a href="joins.html">Joins</a>
+<span class="nav-dropdown-header">Visualisation</span>
+<a href="data_visualisation.html">Data Visualisation</a>
+<span class="nav-dropdown-header">Functions</span>
 <a href="functions.html">Functions</a>
+<hr/>
+<a href="r_cheatsheets.html">Cheatsheets</a>
 </div>
 </div>
 <a href="git_help.html">Git Help</a>
@@ -1334,26 +1342,40 @@ Projects
 <div class="d-article">
 <h1 id="cleaning-data-in-r"><a href="https://rpubs.com/Sergio_Garcia/599344" target="_blank">Cleaning Data in R</a></h1>
 <h3 id="exploring-the-data">Exploring the data</h3>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;">
+<div>
 <ul>
-<li>class() – check the class of an object</li>
-<li>dim() – check dimension of data frame</li>
-<li>names() – check column names</li>
-<li>str() – check the structure of a data frame</li>
-<li>head() – first 6 rows</li>
-<li>tail() – last 6 rows</li>
+<li>class(): check the class of an object</li>
+<li>dim(): check dimension of data frame</li>
+<li>names(): check column names</li>
 </ul>
+</div>
+<div>
+<ul>
+<li>str(): structure of a data frame</li>
+<li>head(): first 6 rows</li>
+<li>tail(): last 6 rows</li>
+</ul>
+</div>
+<div>
 <p><strong>dplyr</strong></p>
 <ul>
-<li>glimse() – same as str() but clearer</li>
+<li>glimpse(): same as str() but clearer</li>
 </ul>
+</div>
+<div>
 <p><strong>Data visualization</strong></p>
-<p>hist() – histogram plot() – scatter plot</p>
+<p>hist(): histogram plot(): scatter plot</p>
+</div>
+<div>
 <p><strong>tidyr</strong></p>
 <ul>
-<li>gather() – takes key-values pairs and spreads them across multiple columns</li>
-<li>separate() – to separate 1 column in multiple columns by a separator</li>
-<li>unite() – opposite to separate</li>
+<li>gather(): takes key-values pairs &amp; spreads them across multiple columns</li>
+<li>separate(): separate 1 column in multiple columns by a separator</li>
+<li>unite(): opposite to separate</li>
 </ul>
+</div>
+<div>
 <p><strong>Type of variables</strong></p>
 <ul>
 <li>character</li>
@@ -1361,33 +1383,44 @@ Projects
 <li>factor</li>
 <li>logical</li>
 </ul>
+</div>
+</div>
 <h3 id="type-conversion">Type conversion</h3>
-<p><strong>Lubridate:</strong> lubridate package: functions combine the letters y, m, d, h, m, s</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;">
+<div>
+<p><strong>Lubridate</strong> package:</p>
+<p>functions combine the letters y, m, d, h, m, s</p>
 <ul>
 <li>ymd()</li>
 <li>mdy()</li>
 <li>hms()</li>
 <li>ymd_hms()</li>
 </ul>
-<p><strong>String manipulation:</strong> stringr library</p>
-<ul>
-<li>str_trim() - remove leading and/or trailing white space</li>
-<li>str_pad() - pad strings to make them a certain number of characters wide</li>
-<li>str_detect() – finding patterns</li>
-<li>str_replace() – replacing patterns</li>
-</ul>
+</div>
+<div>
 <p><strong>base R:</strong></p>
 <ul>
-<li>toupper() – making strings uppercase</li>
-<li>tolower() – making strings lowercase</li>
+<li>toupper(): making strings uppercase</li>
+<li>tolower(): making strings lowercase</li>
 </ul>
+</div>
+<div>
+<p><strong>String manipulation:</strong> stringr library</p>
+<ul>
+<li>str_trim(): remove leading and/or trailing white space</li>
+<li>str_pad(): make them a certain number of characters wide</li>
+<li>str_detect(): finding patterns</li>
+<li>str_replace(): replacing patterns</li>
+</ul>
+</div>
+</div>
 <h3 id="missing-values">Missing Values</h3>
 <ul>
-<li>is.na() – spot all NAs</li>
-<li>any(is.na()) – to check if there is any NA</li>
-<li>summary() – can also be used to check NAs</li>
-<li>complete.cases() – to see which rows have no NAs</li>
-<li>na.omit() – remove rows with missing values</li>
+<li>is.na(): spot all NAs</li>
+<li>any(is.na()): to check if there is any NA</li>
+<li>summary(): can also be used to check NAs</li>
+<li>complete.cases(): to see which rows have no NAs</li>
+<li>na.omit(): remove rows with missing values</li>
 </ul>
 <h3 id="outliers">Outliers</h3>
 <!--radix_placeholder_article_footer-->

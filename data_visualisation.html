@@ -19,26 +19,26 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>Data Science with Sergio: Tidyverse</title>
+  <title>Data Science with Sergio: Data Visualisation</title>
   
   
   
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Data Science with Sergio: Tidyverse"/>
+  <meta property="og:title" content="Data Science with Sergio: Data Visualisation"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Data Science with Sergio"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Data Science with Sergio: Tidyverse"/>
+  <meta property="twitter:title" content="Data Science with Sergio: Data Visualisation"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Tidyverse"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Data Visualisation"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1269,7 +1269,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Tidyverse","authors":[]}
+{"title":"Data Visualisation","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1334,29 +1334,100 @@ Projects
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Tidyverse</h1>
+<h1>Data Visualisation</h1>
 
 </div>
 
 
 <div class="d-article">
-<h2 id="introduction-to-tidyverse"><a href="https://rpubs.com/Sergio_Garcia/592172" target="_blank">Introduction to Tidyverse</a></h2>
-<p>Verbs:</p>
+<h1 id="introduction-to-visualization-with-ggplot2"><a href="https://rpubs.com/Sergio_Garcia/introduction_ggplot2" target="_blank">Introduction to Visualization with ggplot2</a></h1>
+<h3 id="transforming-data-with-dplyr">Transforming data with dplyr</h3>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;">
+<div>
 <ul>
-<li>filter() - extracts particular observations based on a condition</li>
-<li>arrange() - sort observations in ascending or descending order of a particular variable</li>
-<li>mutate() - adding new variables</li>
-<li>summarize() - producing stratified summary statistics and storing them in a data frame</li>
-<li>group_by()</li>
-</ul>
-<p>Some visualization - ggplot2:</p>
+<li>ggplot()
 <ul>
-<li>geom_point()</li>
-<li>geom_line()</li>
-<li>geom_col()</li>
-<li>geom_histogram()</li>
-<li>geom_boxplot()</li>
+<li>aes()
+<ul>
+<li>data</li>
+<li>color</li>
+<li>size</li>
+<li>fill</li>
+</ul></li>
+</ul></li>
 </ul>
+</div>
+<div>
+<ul>
+<li>geom_point()
+<ul>
+<li>alpha</li>
+<li>shape</li>
+<li>size</li>
+<li>label</li>
+<li>position
+<ul>
+<li>position_jitter()</li>
+<li>position_jitterdodge</li>
+</ul></li>
+</ul></li>
+<li>geom_jitter()
+<ul>
+<li>alpha</li>
+<li>width</li>
+</ul></li>
+<li>geom_histogram()
+<ul>
+<li>binwidth</li>
+<li>fill</li>
+<li>position</li>
+<li>alpha</li>
+</ul></li>
+<li>geom_Bar()
+<ul>
+<li>position</li>
+</ul></li>
+<li>geom_line()
+<ul>
+<li>group</li>
+</ul></li>
+<li>geom_segment()</li>
+<li>geom_text()
+<ul>
+<li>label</li>
+<li>color</li>
+</ul></li>
+<li>geom_smooth()</li>
+</ul>
+</div>
+<div>
+<ul>
+<li>labs()
+<ul>
+<li>x</li>
+<li>y</li>
+</ul></li>
+<li>scale_fill_manual()
+<ul>
+<li>label</li>
+<li>values</li>
+</ul></li>
+<li>scale_fill_brewer()</li>
+<li>theme()
+<ul>
+<li>legend.position</li>
+<li>legend.key</li>
+<li>rect</li>
+<li>panel.gri</li>
+<li>axis.ticks</li>
+<li>axis.ticks.length</li>
+</ul></li>
+</ul>
+</div>
+<div>
+<p>Overplotting</p>
+</div>
+</div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
