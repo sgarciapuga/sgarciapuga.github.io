@@ -732,6 +732,16 @@
   }
   
   
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+  
+  
   /* Improve display for browsers without grid (IE/Edge <= 15) */
   
   .downlevel {
@@ -1312,10 +1322,10 @@ Projects
 </button>
 <div class="nav-dropdown-content">
 <a href="r_projects.html">
-<i class="fab fa-r-project"></i>
+<i class="fab fa-r-project" aria-hidden="true"></i>
 </a>
 <a href="python_projects.html">
-<i class="fab fa-python"></i>
+<i class="fab fa-python" aria-hidden="true"></i>
 </a>
 </div>
 </div>
@@ -1323,10 +1333,10 @@ Projects
 <div class="nav-right">
 <a href="about.html">About</a>
 <a href="https://www.linkedin.com/in/sergiogarciapuga/">
-<i class="fab fa-linkedin"></i>
+<i class="fab fa-linkedin" aria-hidden="true"></i>
 </a>
 <a href="https://github.com/sgarciapuga">
-<i class="fab fa-github"></i>
+<i class="fab fa-github" aria-hidden="true"></i>
 </a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
@@ -1343,7 +1353,17 @@ Projects
 
 
 <div class="d-article">
-
+<html>
+<head>
+<title>
+Shiny App Iframe
+</title>
+</head>
+<body>
+<iframe id="example1" src="https://sergiogp.shinyapps.io/world_recipes/" style="border: none; width: 100%; height: 850px" frameborder="0">
+</iframe>
+</body>
+</html>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
