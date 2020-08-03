@@ -19,26 +19,26 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>Data Science with Sergio: Cleaning Data</title>
+  <title>Data Science with Sergio: Time Series</title>
   
   
   
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Data Science with Sergio: Cleaning Data"/>
+  <meta property="og:title" content="Data Science with Sergio: Time Series"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Data Science with Sergio"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Data Science with Sergio: Cleaning Data"/>
+  <meta property="twitter:title" content="Data Science with Sergio: Time Series"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Cleaning Data"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Time Series"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1279,7 +1279,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Cleaning Data","authors":[]}
+{"title":"Time Series","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1363,95 +1363,14 @@ Projects
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Cleaning Data</h1>
+<h1>Time Series</h1>
 
 </div>
 
 
 <div class="d-article">
-<h1 id="cleaning-data-in-r"><a href="https://rpubs.com/Sergio_Garcia/599344" target="_blank">Cleaning Data in R</a></h1>
-<h3 id="exploring-the-data">Exploring the data</h3>
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;">
-<div>
-<ul>
-<li>class(): check the class of an object</li>
-<li>dim(): check dimension of data frame</li>
-<li>names(): check column names</li>
-</ul>
-</div>
-<div>
-<ul>
-<li>str(): structure of a data frame</li>
-<li>head(): first 6 rows</li>
-<li>tail(): last 6 rows</li>
-</ul>
-</div>
-<div>
-<p><strong>dplyr</strong></p>
-<ul>
-<li>glimpse(): same as str() but clearer</li>
-</ul>
-</div>
-<div>
-<p><strong>Data visualization</strong></p>
-<p>hist(): histogram plot(): scatter plot</p>
-</div>
-<div>
-<p><strong>tidyr</strong></p>
-<ul>
-<li>gather(): takes key-values pairs &amp; spreads them across multiple columns</li>
-<li>separate(): separate 1 column in multiple columns by a separator</li>
-<li>unite(): opposite to separate</li>
-</ul>
-</div>
-<div>
-<p><strong>Type of variables</strong></p>
-<ul>
-<li>character</li>
-<li>numeric</li>
-<li>factor</li>
-<li>logical</li>
-</ul>
-</div>
-</div>
-<h3 id="type-conversion">Type conversion</h3>
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;">
-<div>
-<p><strong>Lubridate</strong> package:</p>
-<p>functions combine the letters y, m, d, h, m, s</p>
-<ul>
-<li>ymd()</li>
-<li>mdy()</li>
-<li>hms()</li>
-<li>ymd_hms()</li>
-</ul>
-</div>
-<div>
-<p><strong>base R:</strong></p>
-<ul>
-<li>toupper(): making strings uppercase</li>
-<li>tolower(): making strings lowercase</li>
-</ul>
-</div>
-<div>
-<p><strong>String manipulation:</strong> stringr library</p>
-<ul>
-<li>str_trim(): remove leading and/or trailing white space</li>
-<li>str_pad(): make them a certain number of characters wide</li>
-<li>str_detect(): finding patterns</li>
-<li>str_replace(): replacing patterns</li>
-</ul>
-</div>
-</div>
-<h3 id="missing-values">Missing Values</h3>
-<ul>
-<li>is.na(): spot all NAs</li>
-<li>any(is.na()): to check if there is any NA</li>
-<li>summary(): can also be used to check NAs</li>
-<li>complete.cases(): to see which rows have no NAs</li>
-<li>na.omit(): remove rows with missing values</li>
-</ul>
-<h3 id="outliers">Outliers</h3>
+<h1 id="time-series-analysis"><a href="https://rpubs.com/Sergio_Garcia/time_series_r" target="_blank">Time Series Analysis</a></h1>
+<h1 id="manipulating-time-series-data-with-xts-and-zoo"><a href="https://rpubs.com/Sergio_Garcia/xts_and_zoo_in_r" target="_blank">Manipulating Time Series Data with xts and zoo</a></h1>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
